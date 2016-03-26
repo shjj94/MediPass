@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>의사용 웹 메인</title>
+</head>
+<body>
+    <form>
+    <h1>김태희&nbsp;&nbsp;여&nbsp;&nbsp;870624-2XXXXXX</h1>
+    <br />
+    <table border="1" cellspacing="0.5" width="1000">
+        <tr>
+            <td align="center" width="300">방문 날짜</td>
+            <td align="center">
+                <script type="text/javascript">
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    if(dd<10) { dd='0' +dd }
+                    if(mm<10) { mm='0'+mm  }
+                    today = yyyy + '-' + mm + '-' + dd;
+                    document.write(today);
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">병명</td>
+            <td align="center"><input type="text" id="illName" onfocus="this.value=''" value="illNAme" style="width:700px"/></td>
+        </tr>
+        <tr>
+            <td align="center">질병분류기호</td>
+            <td align="center"><input type="text" id="illCode" onfocus="this.value=''" value="illCode" style="width:700px" /></td>
+        </tr>
+        <tr>
+            <td align="center">의사 이름</td>
+            <td align="center">의사 로그인 정보 중 이름 가져오기</td>
+        </tr>
+    </table> <br /> <br />
+
+    <table border="1" cellspacing="0.5" width="1000">
+            <tr>
+                <td align="center" width="270">처방약품명칭</td>
+                <td align="center" width="80">1회투여량</td>
+                <td align="center" width="80">1일투여횟수</td>
+                <td align="center" width="80">총 투약일수</td>
+                <td align="center" width="210">용법</td>
+                <td align="center" width="280">조제시 참고사항</td>
+            </tr>
+            <tr>
+                <td align="center"><input type="text" name="medName1" onfocus="this.value=''" value="medName1" style="width:270px;"/></td>
+                <td align="center"><input type="text" name="amount1" onfocus="this.value=''" value="amount1" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="num1" onfocus="this.value=''" value="num1" style:width="100px" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="numDay1" onfocus="this.value=''" value="numDay1" style:width="100px" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="usage1" onfocus="this.value=''" value="usage1" style:width="200px" style="width:210px;"/></td>
+                <td align="center"><input type="text" name="note1" onfocus="this.value=''" value="note1" style:width="200px" style="width:280px;"/></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="text" name="medName2" onfocus="this.value=''" value="medName2" style="width:270px;"/></td>
+                <td align="center"><input type="text" name="Amount2" onfocus="this.value=''" value="Amount2" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="num2" onfocus="this.value=''" value="num2" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="numDay2" onfocus="this.value=''" value="numDay2" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="usage2" onfocus="this.value=''" value="usage2" style="width:210px;"/></td>
+                <td align="center"><input type="text" name="note2" onfocus="this.value=''" value="note2" style="width:280px;"/></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="text" name="medName3" onfocus="this.value=''" value="medName3" style="width:270px;"/></td>
+                <td align="center"><input type="text" name="Amount3" onfocus="this.value=''" value="Amount3" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="num3" onfocus="this.value=''" value="num3" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="numDay3" onfocus="this.value=''" value="numDay3" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="usage3" onfocus="this.value=''" value="usage3" style="width:210px;"/></td>
+                <td align="center"><input type="text" name="note3" onfocus="this.value=''" value="note3" style="width:280px;"/></td>
+            </tr>
+            <tr>
+                <td align="center"><input type="text" name="medName4" onfocus="this.value=''" value="medName4" style="width:270px;"/></td>
+                <td align="center"><input type="text" name="Amount4" onfocus="this.value=''" value="Amount4" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="num4" onfocus="this.value=''" value="num4" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="numDay4" onfocus="this.value=''" value="numDay4" style="width:80px;"/></td>
+                <td align="center"><input type="text" name="usage4" onfocus="this.value=''" value="usage4" style="width:210px;"/></td>
+                <td align="center"><input type="text" name="note4" onfocus="this.value=''" value="note4" style="width:280px;"/></td>
+            </tr>
+            <tr>
+                <td colspan="6" align="center"><input type="button" name="add" value="+"/></td>
+            </tr>
+        </table> <br /><br />
+        
+        <center><input type="submit" name="submit_doc" value="완료"/></center>
+    </form>
+</body>
+</html>

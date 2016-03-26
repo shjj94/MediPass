@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>약사용 웹 메인</title>
+</head>
+
+<body>
+    <h1>김태희&nbsp;&nbsp;여&nbsp;&nbsp;870624-2XXXXXX</h1>
+    <br />
+
+    <table border="1" cellspacing="0.5" width="1000">
+        <tr>
+            <td align="center" width="270">처방약품명칭</td>
+            <td align="center" width="80">1회투여량</td>
+            <td align="center" width="80">1일투여횟수</td>
+            <td align="center" width="80">총 투약일수</td>
+            <td align="center" width="210">용법</td>
+            <td align="center" width="280">조제시 참고사항</td>
+        </tr>
+        <tr>
+            <td align="center">포리부틴</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="center">식후 30분</td>
+            <td align="center">ㅇㅇ 알러지에 대해 설명해 주세요</td>
+        </tr>
+        <tr>
+            <td align="center">포리부틴</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="center">식후 30분</td>
+            <td align="center">ㅇㅇ 알러지에 대해 설명해 주세요</td>
+        </tr>
+        <tr>
+            <td align="center">포리부틴</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="center">식후 30분</td>
+            <td align="center">ㅇㅇ 알러지에 대해 설명해 주세요</td>
+        </tr>
+        <tr>
+            <td align="center">포리부틴</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="right">1</td>
+            <td align="center">식후 30분</td>
+            <td align="center">ㅇㅇ 알러지에 대해 설명해 주세요</td>
+        </tr>
+    </table><br /><br />
+
+    <table border="1" cellspacing="0.5" width="1000">
+        <tr>
+            <td align="center" width="300">교부 일자</td>
+            <td align="center">
+                <script type="text/javascript">
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    if(dd<10) { dd='0' +dd }
+                    if(mm<10) { mm='0'+mm  }
+                    today = yyyy + '/' + mm + '/' + dd;
+                    document.write(today);
+                </script>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">질병분류기호</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td align="center">의료기관 명칭</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td align="center">의료기관 전화번호</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td align="center">의료기관 팩스번호</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td align="center">의료기관 주소</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td align="center">의사 면허번호</td>
+            <td></td>
+        </tr>
+    </table><br /><br />
+    <center><input type="submit" id="submit_pharm" value="제조완료" /></center>
+</body>
+</html>
