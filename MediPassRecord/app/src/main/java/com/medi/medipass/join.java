@@ -8,14 +8,14 @@ import android.widget.Button;
 /**
  * Created by shjjthjj on 2016-03-25.
  */
-public class join extends AppCompatActivity {
+public class Join extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join);
 
-        Button bt_back = (Button)findViewById(R.id.back_join);
+        Button bt_back = (Button)findViewById(R.id.join_back);
         bt_back.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
