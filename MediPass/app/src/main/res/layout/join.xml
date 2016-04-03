@@ -7,11 +7,11 @@
     <Button
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:id="@+id/back_join"
+        android:id="@+id/join_back"
         android:background="@drawable/back"/>
 
     <ImageView
-        android:id="@+id/login_logo"
+        android:id="@+id/join_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/logo"
@@ -25,6 +25,7 @@
         android:layout_gravity="center"
         android:hint="ID"
         android:layout_marginBottom="5dp" />
+
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -32,6 +33,7 @@
         android:layout_gravity="center"
         android:hint="PW"
         android:layout_marginBottom="5dp" />
+
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -39,6 +41,7 @@
         android:layout_gravity="center"
         android:hint="NAME"
         android:layout_marginBottom="5dp" />
+
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -63,6 +66,7 @@
             android:id="@+id/edit_join_day"
             android:hint="DAY"/>
     </LinearLayout>
+
     <RadioGroup
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -73,18 +77,19 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/join_male"
+            android:id="@+id/radio_join_male"
             android:text="남"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/join_female"
+            android:id="@+id/radio_join_female"
             android:text="여"/>
     </RadioGroup>
 
     <Button
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:id="@+id/bt_join_submit"
         android:text="Join"
         android:layout_gravity="center"
         android:background="#5e5e5e"/>

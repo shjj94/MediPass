@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MediPass.iml" filepath="$PROJECT_DIR$/MediPass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MediPassRecord.iml" filepath="$PROJECT_DIR$/MediPassRecord.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
