@@ -1,6 +1,5 @@
 package com.medi.medipass;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,44 +7,30 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 public class Record extends AppCompatActivity implements View.OnClickListener{
+    View frag_record; // fragment View
 
-    //View frag_base; //진료기록 이외에서 쓸 때 이 fragment를 사용
-    View frag_record; //진료기록 메뉴에서는 리스트/캘린더버튼이 들어가면, 그 버튼만큼 fragment 크기가 줄어들기 때문에 진료기록에서만 이 fragment사용
-
-    public final int FRAGMENT_RECORD = 0;
     public final int FRAGMENT_RECORD_LIST = 1;
     public final int FRAGMENT_RECORD_CAL = 2;
 
-    int current_fragment_index = FRAGMENT_RECORD_LIST;
+    int current_fragment_index = FRAGMENT_RECORD_LIST;// 기본화면은 list
 
-    LinearLayout record;
-
-    //static activity선언. 화면전환시 사용
-    //http://muzesong.tistory.com/entry/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%ED%98%84%EC%9E%AC-%EC%95%A1%ED%8B%B0%EB%B9%84%ED%8B%B0-%EB%8B%A4%EB%A5%B8-%EC%95%A1%ED%8B%B0%EB%B9%84%ED%8B%B0-%EC%A2%85%EB%A3%8C%ED%95%98%EA%B8%B0
-    public static Activity record_activity;
-    Home home_activity = (Home)Home.home_activity;
+    Button bt_list, bt_cal;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bottom_menu);
+        setContentView(R.layout.record);
 
-        if(home_activity != null) {
-            home_activity.finish();
-        }
-
-        //frag_base = (View)findViewById(R.id.ll_fragment_base);
         frag_record = (View)findViewById(R.id.ll_fragment_record);
 
         /* xml의 버튼을 찾아와서 임시객체에 등록 */
-        Button bt_list = (Button)findViewById(R.id.up_menu_list);
-        Button bt_cal = (Button)findViewById(R.id.up_menu_cal);
-        Button bt_record = (Button)findViewById(R.id.button_record);
-        Button bt_home = (Button)findViewById(R.id.button_home);
-        Button bt_mypage = (Button)findViewById(R.id.button_mypage);
+        bt_list = (Button)findViewById(R.id.up_menu_list);
+        bt_cal = (Button)findViewById(R.id.up_menu_cal);
+        Button bt_record = (Button)findViewById(R.id.bottom_record_record);
+        Button bt_home = (Button)findViewById(R.id.bottom_record_home);
+        Button bt_mypage = (Button)findViewById(R.id.bottom_record_mypage);
 
         /* onClick은 밑에 따로 메소드로 구현 */
         bt_record.setOnClickListener(this);
@@ -54,12 +39,8 @@ public class Record extends AppCompatActivity implements View.OnClickListener{
         bt_list.setOnClickListener(this);
         bt_cal.setOnClickListener(this);
 
-        //activity객체에 현재 클래스를 담아준다
-        record_activity = Record.this;
-
-        /* 안보이게 설정했던 '리스트', '캘린더'버튼이 들어있는 화면을 보여준다 */
-        record = (LinearLayout)findViewById(R.id.frag_record);
-        record.setVisibility(View.VISIBLE);
+        bt_list.setSelected(true);
+        bt_record.setSelected(true);
 
         fragmentReplace(current_fragment_index);
     }
@@ -81,9 +62,6 @@ public class Record extends AppCompatActivity implements View.OnClickListener{
         Fragment newFragment = null;
 
         switch(idx){
-            case FRAGMENT_RECORD:
-                newFragment = new RecordList();
-                break;
             case FRAGMENT_RECORD_LIST:
                 newFragment = new RecordList();
                 break;
@@ -100,28 +78,43 @@ public class Record extends AppCompatActivity implements View.OnClickListener{
     @Override
     public void onClick(View v){
         switch(v.getId()){
-            case R.id.button_record:
-                current_fragment_index = FRAGMENT_RECORD;
-                fragmentReplace(current_fragment_index);
+            case R.id.bottom_record_record:
+                Intent intent_record = new Intent(getApplicationContext(), Record.class);
+                intent_record.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent_record);
                 break;
-            case R.id.button_home:
+            case R.id.bottom_record_home:
                 Intent intent_home = new Intent(getApplicationContext(), Home.class);
+                intent_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent_home);
-                record.setVisibility(View.INVISIBLE);
                 break;
-            case R.id.button_mypage:
+            case R.id.bottom_record_mypage:
                 Intent intent_mypage = new Intent(getApplicationContext(), MyPage.class);
+                intent_mypage.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent_mypage);
-                record.setVisibility(View.INVISIBLE);
                 break;
             case R.id.up_menu_list:
+                bt_list.setSelected(true);
+                bt_cal.setSelected(false);
                 current_fragment_index = FRAGMENT_RECORD_LIST;
                 fragmentReplace(current_fragment_index);
                 break;
             case R.id.up_menu_cal:
+                bt_list.setSelected(false);
+                bt_cal.setSelected(true);
                 current_fragment_index = FRAGMENT_RECORD_CAL;
                 fragmentReplace(current_fragment_index);
                 break;
         }
+    }
+
+    /* 뒤로가기 버튼 동작 시, Home으로 가기 */
+    //http://diyall.tistory.com/781
+    //http://comxp.tistory.com/109
+    @Override
+    public void onBackPressed(){
+        Intent intent_home = new Intent(getApplicationContext(), Home.class);
+        intent_home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent_home);
     }
 }
