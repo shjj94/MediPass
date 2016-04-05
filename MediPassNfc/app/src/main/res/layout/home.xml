@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:layout_marginTop="30dp">
+
+    <RelativeLayout
+        android:layout_width="320dp"
+        android:layout_height="420dp"
+        android:background="#e0e0e0"
+        android:padding="15dp">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="170dp"
+            android:id="@+id/home_receipt"
+            android:background="#82bfe8"
+            android:layout_margin="5dp"
+            android:text="접수하기"/>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="135dp"
+            android:id="@+id/home_submit"
+            android:background="#9e9e9e"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@id/home_receipt"
+            android:text="처방전 제출"/>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="135dp"
+            android:id="@+id/home_mypage"
+            android:background="#7f7f7f"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@id/home_receipt"
+            android:layout_below="@id/home_submit"
+            android:text="마이페이지"/>
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:id="@+id/home_record"
+            android:background="#092e91"
+            android:layout_margin="5dp"
+            android:layout_below="@id/home_receipt"
+            android:text="진료기록"/>
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:id="@+id/home_check_number"
+            android:background="#95a5a6"
+            android:layout_margin="5dp"
+            android:layout_below="@id/home_record"
+            android:text="대기인원 확인"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
