@@ -22,6 +22,8 @@ public class MyPageLogInfo extends AppCompatActivity implements View.OnClickList
         bt_record.setOnClickListener(this);
         bt_home.setOnClickListener(this);
         bt_mypage.setOnClickListener(this);
+
+        bt_mypage.setSelected(true);
     }
 
     @Override

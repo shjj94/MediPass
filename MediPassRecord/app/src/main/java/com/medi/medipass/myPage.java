@@ -23,6 +23,8 @@ public class MyPage extends AppCompatActivity implements View.OnClickListener{
         bt_record.setOnClickListener(this);
         bt_home.setOnClickListener(this);
         bt_mypage.setOnClickListener(this);
+
+        bt_mypage.setSelected(true);
     }
 
     /* 뒤로가기 버튼 동작 시, Home으로 가기 */
