@@ -13,12 +13,12 @@ import java.util.ArrayList;
  * Created by shjjthjj on 2016-04-14.
  */
 public class ListViewAdapter extends BaseAdapter {
+
     //Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
 
     //ListViewAdapter의 생성자
     public ListViewAdapter(){
-
     }
 
     //Adapter에 사용되는 데이터의 개수를 리턴 : 필수구현

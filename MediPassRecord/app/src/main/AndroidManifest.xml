@@ -24,11 +24,12 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
+        <activity android:name=".Join" />
         <activity android:name=".MyPage" />
         <activity android:name=".MyPageLogInfo" />
         <activity android:name=".Record" />
+        <activity android:name=".RecordCal" />
         <activity android:name=".RecordList" />
-        <activity android:name=".RecordCal"></activity>
     </application>
 
 </manifest>
