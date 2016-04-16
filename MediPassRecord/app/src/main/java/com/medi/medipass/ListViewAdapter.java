@@ -1,6 +1,7 @@
 package com.medi.medipass;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +68,7 @@ public class ListViewAdapter extends BaseAdapter {
 
     //아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
     public void addItem(String date, String disName){
+        Log.d("PHP", "addItem");
         ListViewItem item = new ListViewItem();
 
         item.setItem_date(date);

@@ -31,5 +31,6 @@
         <activity android:name=".RecordCal" />
         <activity android:name=".RecordList" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
 </manifest>

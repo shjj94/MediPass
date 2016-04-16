@@ -65,7 +65,7 @@ public class RecordList extends Fragment {
     //AsyncTask : thread + handler
     //Async(비동기화) : 병렬회로. 계속 요청을 보내는 통로와 응답을 받는 통로를 따로 만들어두는 것
     //sync(동기화) : 직렬회로. 일이 순차적으로 진행되면서 하나가 해결되면 그다음 일이 진행되는 식으로 네트워크에서는 요청(request)를 보내면 항상 응답(response)을 받아야 진행하는 방식으로 구현
-    class GettingPHP extends AsyncTask<String, Integer, String> {
+    class GettingPHP extends AsyncTask<String, Integer, String> { //<Param, Progress, Result>
 
         @Override
         protected void onPreExecute() {
@@ -77,15 +77,21 @@ public class RecordList extends Fragment {
         //그래서 하나의 인수만 필요하다면 params[0]만 사용하면 된다.
         @Override
         protected String doInBackground(String... params){
-            Log.d("PHP", "doInBackground" + params);
+            Log.d("PHP", "doInBackground " + params[0]);
             StringBuilder jsonHtml = new StringBuilder();
             try{
+                // URL --> openConnection() --> URLConnection  --> getInputStream --> InputStream (내용읽음)
+                Log.d("PHP", "try");
                 URL phpUrl = new URL(params[0]);
-                HttpURLConnection conn = (HttpURLConnection)phpUrl.openConnection();
+                HttpURLConnection conn = (HttpURLConnection)phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
 
                 if(conn != null){
-                    conn.setConnectTimeout(1000); //1초
+                    Log.d("PHP", "if(conn!=null)");
+
+                    conn.setConnectTimeout(5000); //5초, 어떤 서버로 연결 시 실패할 때를 대비
                     conn.setUseCaches(false);
+
+                    Log.d("PHP", "responseCode : " + conn.getResponseCode());
 
                     if (conn.getResponseCode() == HttpURLConnection.HTTP_OK){
                         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -93,14 +99,17 @@ public class RecordList extends Fragment {
                             String line = br.readLine();
                             if(line == null) break;
                             jsonHtml.append(line + "\n");
+                            Log.d("PHP", "in while : "+jsonHtml);
                         }
                         br.close();
                     }
                 }
                 conn.disconnect();
             } catch(Exception e){
+                Log.d("PHP", "Error");
                 e.printStackTrace();
             }
+            Log.d("PHP", "end of doInBackground : "+jsonHtml.toString());
             return jsonHtml.toString();
         }
 
@@ -110,9 +119,11 @@ public class RecordList extends Fragment {
             Log.d("PHP", "onPostExecute" + str);
             try{
                 //php에서 받아온 JSON데이터를 JSON오브젝트로 변환
-                JSONObject jobject = new JSONObject(str);
+                //JSONObject jobject = new JSONObject(str);
                 //results라는 key는 JSON배열로 되어있다
-                JSONArray results = jobject.getJSONArray("results");
+                //JSONArray results = jobject.getJSONArray("results");
+
+                JSONArray results = new JSONArray(str);
 
                 /*
                 String data = "";
@@ -123,9 +134,12 @@ public class RecordList extends Fragment {
                 data += "Results : \n";
                 */
 
-                for(int i=0;i<results.length();++i){
+                for(int i=0;i<results.length();i++){ //length->child의 갯수
                     JSONObject temp = results.getJSONObject(i);
-                    adapter.addItem("" + temp.get("record_date"), "" + temp.get("disiase_name"));
+                    String date = temp.getString("record_date");
+                    String name = temp.getString("disease_name");
+                    Log.d("PHP", "date : " + date + "name : " + name);
+                    adapter.addItem(date, name);
                 }
             } catch(JSONException e){
                 e.printStackTrace();
