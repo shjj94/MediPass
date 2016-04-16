@@ -43,13 +43,6 @@ public class RecordList extends Fragment {
         gPHP.execute(url);
 
         /*
-        //아이템 추가
-        adapter.addItem("2016-01-02", "장염");
-        adapter.addItem("2016-01-03", "배탈");
-        adapter.addItem("2016-01-04", "설사");
-        */
-
-        /*
         //클릭 이벤트 정의
         listview.setOnClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -81,7 +74,7 @@ public class RecordList extends Fragment {
             StringBuilder jsonHtml = new StringBuilder();
             try{
                 // URL --> openConnection() --> URLConnection  --> getInputStream --> InputStream (내용읽음)
-                Log.d("PHP", "try");
+                Log.d("PHP", "back_try");
                 URL phpUrl = new URL(params[0]);
                 HttpURLConnection conn = (HttpURLConnection)phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
 
@@ -118,12 +111,14 @@ public class RecordList extends Fragment {
         protected void onPostExecute(String str){
             Log.d("PHP", "onPostExecute" + str);
             try{
-                //php에서 받아온 JSON데이터를 JSON오브젝트로 변환
-                //JSONObject jobject = new JSONObject(str);
-                //results라는 key는 JSON배열로 되어있다
-                //JSONArray results = jobject.getJSONArray("results");
+                Log.d("PHP", "post_try");
 
-                JSONArray results = new JSONArray(str);
+                //php에서 받아온 JSON데이터를 JSON오브젝트로 변환
+                JSONObject jobject = new JSONObject(str);
+                //results라는 key는 JSON배열로 되어있다
+                JSONArray results = jobject.getJSONArray("results");
+
+                Log.d("PHP", "results : " + results);
 
                 /*
                 String data = "";
@@ -142,6 +137,7 @@ public class RecordList extends Fragment {
                     adapter.addItem(date, name);
                 }
             } catch(JSONException e){
+                Log.d("PHP", "onPost Error");
                 e.printStackTrace();
             }
         }
