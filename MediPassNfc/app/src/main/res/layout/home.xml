@@ -49,7 +49,8 @@
             android:background="#95a5a6"
             android:layout_margin="5dp"
             android:layout_below="@id/home_record"
-            android:text="대기인원 확인"/>
+            android:text="대기인원 확인"
+            android:onClick="homeWaitListCLicked"/>
 
     </RelativeLayout>
 
