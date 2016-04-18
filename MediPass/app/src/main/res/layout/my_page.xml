@@ -3,12 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
-    android:layout_marginTop="30dp">
+    android:layout_marginTop="40dp"
+    android:orientation="vertical">
     <RelativeLayout
-        android:layout_width="320dp"
-        android:layout_height="340dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="#e0e0e0"
-        android:padding="15dp">
+        android:padding="15dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="100dp">
         <Button
             android:layout_width="150dp"
             android:layout_height="300dp"
@@ -33,7 +38,38 @@
             android:layout_toRightOf="@id/mypage_info"
             android:layout_below="@id/mypage_notice"
             android:text="도움말\n버전정보"/>
-
     </RelativeLayout>
+
+    <LinearLayout
+        android:id='@+id/bottom_menu_bar'
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#e0e0e0"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id='@+id/bottom_mypage_record'
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="진료기록"
+            android:textSize="50px"
+            android:background="@drawable/selector"></Button>
+        <Button
+            android:id="@+id/bottom_mypage_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="홈"
+            android:textSize="50px"
+            android:background="@drawable/selector"></Button>
+        <Button
+            android:id="@+id/bottom_mypage_mypage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="마이페이지"
+            android:textSize="50px"
+            android:background="@drawable/selector"></Button>
+    </LinearLayout>
 
 </LinearLayout>

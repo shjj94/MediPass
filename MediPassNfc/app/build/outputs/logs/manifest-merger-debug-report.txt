@@ -1,0 +1,173 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:2:1-91:12
+	package
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:3:5-32
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+uses-feature#android.hardware.nfc
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:5:5-80
+	android:required
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:5:55-78
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:5:19-54
+uses-permission#android.permission.NFC
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:6:5-62
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:6:22-59
+uses-permission#android.permission.BIND_NFC_SERVICE
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:7:5-74
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:7:22-72
+application
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:9:5-89:19
+MERGED from [com.android.support:appcompat-v7:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:animated-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:7:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:12:9-41
+	android:supportsRtl
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:13:9-35
+	android:allowBackup
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:10:9-35
+	android:icon
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:11:9-38
+	android:theme
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:14:9-40
+activity#com.medi.medipass.Login
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:15:9-23:20
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:15:19-40
+intent-filter#android.intent.action.MAIN+android.intent.category.DEFAULT+android.intent.category.LAUNCHER+android.nfc.action.NDEF_DISCOVERED
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:16:13-22:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:19:27-74
+action#android.nfc.action.NDEF_DISCOVERED
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:20:17-76
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:20:25-74
+category#android.intent.category.DEFAULT
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:21:17-75
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:21:27-73
+activity#com.medi.medipass.Join
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:24:9-42
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:24:19-39
+activity#com.medi.medipass.Home
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:25:9-40:20
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:25:19-39
+intent-filter#android.intent.category.DEFAULT+android.nfc.action.NDEF_DISCOVERED
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:26:13-30:29
+data
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:29:17-54
+	android:mimeType
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:29:23-52
+intent-filter#android.intent.category.DEFAULT+android.nfc.action.TAG_DISCOVERED
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:36:13-39:29
+action#android.nfc.action.TAG_DISCOVERED
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:37:17-75
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:37:25-73
+activity#com.medi.medipass.MyPage
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:41:9-44
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:41:19-41
+meta-data#com.google.android.gms.version
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:47:9-49:69
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:49:13-66
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:48:13-58
+activity#com.medi.medipass.MyPageLogInfo
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:51:9-50
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:51:19-48
+activity#com.medi.medipass.Record
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:52:9-43
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:52:19-41
+activity#com.medi.medipass.RecordList
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:53:9-47
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:53:19-45
+activity#com.medi.medipass.RecordCal
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:54:9-46
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:54:19-44
+activity#com.medi.medipass.HospitalNfc
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:55:9-70:20
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:55:19-46
+activity#com.medi.medipass.SubmitPrescription
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:73:9-87:40
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:73:19-53
+activity#com.medi.medipass.WaitList
+ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:88:9-56
+	android:name
+		ADDED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml:88:19-43
+uses-sdk
+INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:animated-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-vector-drawable:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\AndroidManifest.xml:20:5-43
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:23.2.1] C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Elizabeth\Desktop\MediPass0404\MediPassNfc\app\src\main\AndroidManifest.xml

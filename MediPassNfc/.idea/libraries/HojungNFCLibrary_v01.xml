@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="HojungNFCLibrary_v01">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/HojungNFCLibrary_v01.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
