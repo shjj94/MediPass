@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id='@+id/whole'
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:layout_marginTop="40dp"
     android:orientation="vertical">
-    <RelativeLayout
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#e0e0e0"
-        android:padding="15dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="100dp">
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="300dp"
-            android:id="@+id/mypage_info"
-            android:background="#82bfe8"
-            android:layout_margin="5dp"
-            android:text="로그인 정보"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="120dp"
-            android:id="@+id/mypage_notice"
-            android:background="#3498db"
-            android:layout_margin="5dp"
-            android:layout_toRightOf="@id/mypage_info"
-            android:text="공지사항"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="180dp"
-            android:id="@+id/mypage_version"
-            android:background="#7f7f7f"
-            android:layout_margin="5dp"
-            android:layout_toRightOf="@id/mypage_info"
-            android:layout_below="@id/mypage_notice"
-            android:text="도움말\n버전정보"/>
-    </RelativeLayout>
+        android:id="@+id/frag_record"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id='@+id/up_menu_bar'
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#e0e0e0"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/up_menu_list"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="리스트"
+                android:background="@drawable/selector" />
+            <Button
+                android:id="@+id/up_menu_cal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="캘린더"
+                android:background="@drawable/selector" /></LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_fragment_record"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"></FrameLayout>
+    </LinearLayout>
+
 
     <LinearLayout
         android:id='@+id/bottom_menu_bar'
@@ -47,7 +48,7 @@
         android:background="#e0e0e0"
         android:layout_alignParentBottom="true">
         <Button
-            android:id='@+id/bottom_mypage_record'
+            android:id='@+id/bottom_record_record'
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -55,7 +56,7 @@
             android:textSize="50px"
             android:background="@drawable/selector"></Button>
         <Button
-            android:id="@+id/bottom_mypage_home"
+            android:id="@+id/bottom_record_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -63,7 +64,7 @@
             android:textSize="50px"
             android:background="@drawable/selector"></Button>
         <Button
-            android:id="@+id/bottom_mypage_mypage"
+            android:id="@+id/bottom_record_mypage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -71,5 +72,6 @@
             android:textSize="50px"
             android:background="@drawable/selector"></Button>
     </LinearLayout>
+
 
 </LinearLayout>
