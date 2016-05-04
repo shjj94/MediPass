@@ -68,12 +68,22 @@ public class ListViewAdapter extends BaseAdapter {
 
     //아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
     public void addItem(String date, String disName){
-
         Log.d("PHP", "addItem");
         ListViewItem item = new ListViewItem();
 
         item.setItem_date(date);
         item.setItem_disName(disName);
+
+        listViewItemList.add(item);
+        notifyDataSetChanged();
+    }
+
+    public void addItemv(String date, String name){
+        Log.d("PHP", "addItem_cal");
+        ListViewItem item = new ListViewItem();
+
+        item.setItem_date(date);
+        item.setItem_disName(name);
 
         listViewItemList.add(item);
         notifyDataSetChanged();

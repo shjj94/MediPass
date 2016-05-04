@@ -131,7 +131,7 @@ public class RecordList extends Fragment {
 
                 for(int i=0;i<results.length();i++){ //length->child의 갯수
                     JSONObject temp = results.getJSONObject(i);
-                    String date = temp.getString("record_date");
+                    String date = temp.getString("record_date_list");
                     String name = temp.getString("disease_name");
                     Log.d("PHP", "date : " + date + "name : " + name);
                     adapter.addItem(date, name);
