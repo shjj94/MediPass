@@ -60,3 +60,4 @@ public class MyPage extends AppCompatActivity implements View.OnClickListener{
         }
     }
 }
+

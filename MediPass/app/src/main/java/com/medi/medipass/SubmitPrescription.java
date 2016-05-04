@@ -67,14 +67,19 @@ public class SubmitPrescription extends AppCompatActivity {
             @Override
             public void onReceiveMessage(NfcModel[] models) {
                 // TODO Auto-generated method stub
+                Log.d("NFC2", "type : " + models[0].getTypeStr() + " , " + "payload : " + models[0].getPayloadStr() + " , " + "recptClicked : " +submitPres);
+                String spot= models[0].getTypeStr();
+
                 try{
-                    if(submitPres==true){ //제출하기 다이얼로그가 떠있는 상태일 때
+                    if(submitPres==true&&spot.equals("pharmacy")){ //제출하기 다이얼로그가 떠있는 상태일 때
                         /* NFC태그값 토스트로 띄워주고
                          * 다이얼로그 끔
                          */
                         Toast.makeText(SubmitPrescription.this, "type : " + models[0].getTypeStr() + " , " + "payload : " + models[0].getPayloadStr(), Toast.LENGTH_SHORT).show();
                         submitPres=false;
                         dialog.dismiss();
+                    }else{
+                        Toast.makeText(SubmitPrescription.this, "처방전 제출 버튼입니다. 접수하기 버튼을 눌러주세요.", Toast.LENGTH_SHORT).show();
                     }
 
 

@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -20,6 +21,15 @@ import android.widget.Toast;
 import com.hojung.nfc.HojungNFCReadLibrary;
 import com.hojung.nfc.interfaces.OnHojungNFCListener;
 import com.hojung.nfc.model.NfcModel;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class Home extends AppCompatActivity {
 
@@ -37,7 +47,7 @@ public class Home extends AppCompatActivity {
 
 
     Context mContext;
-    Boolean recptliCked;
+    Boolean recptClicked;
 
     //SubmitPrescription submit_activity = (SubmitPrescription)SubmitPrescription.submit_activity;
 
@@ -100,7 +110,7 @@ public class Home extends AppCompatActivity {
 
         if(login_activity != null) { login_activity.finish(); }
 
-        Button bt_record = (Button)findViewById(R.id.home_record);
+        final Button bt_record = (Button)findViewById(R.id.home_record);
         Button bt_myPage = (Button) findViewById(R.id.home_mypage);
         Button bt_waitList = (Button) findViewById(R.id.home_check_number);
         final Button bt_receipt = (Button) findViewById(R.id.home_receipt);
@@ -140,7 +150,7 @@ public class Home extends AppCompatActivity {
                 /*Intent intent_receipt = new Intent(getApplicationContext(), HospitalNfc.class);
                 startActivity(intent_receipt);*/
                 //hospital_activity=HospitalNfc.this;
-                recptliCked = true;
+                recptClicked = true;
 //                Dialog dialog = new Dialog(Home.this);
                 dialog.setContentView(R.layout.treat_recept);
                 dialog.setTitle("병원");
@@ -176,14 +186,33 @@ public class Home extends AppCompatActivity {
             @Override
             public void onReceiveMessage(NfcModel[] models) {
                 // TODO Auto-generated method stub
+
+
                 try{
-                    if(recptliCked==true){//접수하기 다이얼로그 떠있는 상태일 때
+
+                    Log.d("NFC1", "type : " + models[0].getTypeStr() + " , " + "payload : " + models[0].getPayloadStr() + " , " + "recptClicked : " +recptClicked);
+                    String spot= models[0].getTypeStr();
+
+                    if(spot instanceof String) {
+
+                        Log.d("NFC1", "spot : " + spot);
+                    }
+
+                    if(recptClicked==true&&spot.equals("hospital")){//접수하기 다이얼로그 떠있는 상태일 때
                         /* NFC태그값 토스트로 띄워주고
                          * 다이얼로그 끔
                          */
                         Toast.makeText(Home.this, "type : " + models[0].getTypeStr() + " , " + "payload : " + models[0].getPayloadStr(), Toast.LENGTH_SHORT).show();
-                        recptliCked=false;
+                        recptClicked=false;
                         dialog.dismiss();
+
+                        Log.d("NFC", "type" + models[0].getTypeStr() + "payload : " + models[0].getPayloadStr());
+                        /*0503 추가내용 대기목록에 이름 추가하기*/
+                        registerWaitList();
+                        //접수 진행 후, 버튼 비활성화.
+                        bt_receipt.setEnabled(false);
+                    }else {
+                        Toast.makeText(Home.this, "병원 접수 버튼입니다. 처방전 제출하기 버튼을 눌러주세요.", Toast.LENGTH_SHORT).show();
                     }
 
 
@@ -270,4 +299,88 @@ public class Home extends AppCompatActivity {
         backPressCloseHandler.onBackPressred();
     }
 
+
+    public void registerWaitList(){
+        String url = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/register_wait_list.php";
+
+        //php를 읽어올때 사용할 변수
+        GettingPHP gPHP = new GettingPHP();
+        gPHP.execute(url);
+    }
+
+        /*0503 추가내용 대기목록에 이름 추가하기*/
+
+    //AsyncTask : thread + handler
+    //Async(비동기화) : 병렬회로. 계속 요청을 보내는 통로와 응답을 받는 통로를 따로 만들어두는 것
+    //sync(동기화) : 직렬회로. 일이 순차적으로 진행되면서 하나가 해결되면 그다음 일이 진행되는 식으로 네트워크에서는 요청(request)를 보내면 항상 응답(response)을 받아야 진행하는 방식으로 구현
+    class GettingPHP extends AsyncTask<String, Integer, String> { //<Param, Progress, Result>
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        //php에서 데이터를 읽어오는 역할, 백그라운드 스레드로 동작해야 하는 작업을 실행한다 : 필수구현
+        //execute메서드로 전달한 data tye이 params 인수로 전달되는데 여러개의 인수를 전달할 수 있으므로 배열 타입으로 되어 있다.
+        //그래서 하나의 인수만 필요하다면 params[0]만 사용하면 된다.
+        @Override
+        protected String doInBackground(String... params){
+            Log.d("PHP", "doInBackground " + params[0]);
+            StringBuilder jsonHtml = new StringBuilder();
+            try{
+                // URL --> openConnection() --> URLConnection  --> getInputStream --> InputStream (내용읽음)
+                Log.d("PHP", "back_try");
+                URL phpUrl = new URL(params[0]);
+                HttpURLConnection conn = (HttpURLConnection)phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
+
+                if(conn != null){
+                    Log.d("PHP", "if(conn!=null)");
+
+                    conn.setConnectTimeout(5000); //5초, 어떤 서버로 연결 시 실패할 때를 대비
+                    conn.setUseCaches(false);
+
+                    Log.d("PHP", "responseCode : " + conn.getResponseCode());
+
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        while(true){
+                            String line = br.readLine();
+                            if(line == null) break;
+                            jsonHtml.append(line + "\n");
+                            Log.d("PHP", "in while : "+jsonHtml);
+                        }
+                        br.close();
+                    }
+                }
+                conn.disconnect();
+            } catch(Exception e){
+                Log.d("PHP", "Error");
+                e.printStackTrace();
+            }
+            Log.d("PHP", "end of doInBackground : "+jsonHtml.toString());
+            return jsonHtml.toString();
+        }
+
+        //가져온 데이터를 이용해 원하는 일을 하도록 한다
+        @Override
+        protected void onPostExecute(String str){
+            Log.d("PHP", "onPostExecute" + str);
+            try{
+                Log.d("PHP", "post_try");
+
+                //php에서 받아온 JSON데이터를 JSON오브젝트로 변환
+                JSONObject jobject = new JSONObject(str);
+                //results라는 key는 JSON배열로 되어있다
+                JSONArray results = jobject.getJSONArray("results");
+
+                Log.d("PHP", "results : " + results);
+
+
+
+            } catch(JSONException e){
+                Log.d("PHP", "onPost Error");
+                e.printStackTrace();
+            }
+        }
+    }
 }
