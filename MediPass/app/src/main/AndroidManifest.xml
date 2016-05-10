@@ -53,6 +53,7 @@
         <activity android:name=".Record"/>
         <activity android:name=".RecordList"/>
         <activity android:name=".RecordCal"/>
+        <activity android:name=".RecordItemClick"/>
         <activity android:name=".HospitalNfc">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>

@@ -1,5 +1,6 @@
 package com.medi.medipass;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 /**
  * Created by shjjthjj on 2016-04-14.
  */
-public class ListViewAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter implements View.OnClickListener {
+    Context mcontext = null;
 
     //Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     private ArrayList<ListViewItem> listViewItemList = new ArrayList<ListViewItem>();
@@ -30,19 +32,23 @@ public class ListViewAdapter extends BaseAdapter {
 
     //position에 위치한 데이터를 화면에 출력하는데 사용될 view를 리턴 : 필수구현
     @Override
-    public View getView(int position, View convertview, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         final int pos = position;
-        final Context context = parent.getContext();
+        mcontext = parent.getContext();
 
         //listview_item 레이아웃을 inflate하여 convertView 참조 획득
-        if (convertview == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            convertview = inflater.inflate(R.layout.listview_item, parent, false);
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) mcontext.getSystemService(mcontext.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.listview_item, parent, false);
+
+            convertView.setTag(position);
+
+            convertView.setOnClickListener(this);
         }
 
         //화면에 표시될 view(layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        TextView item_date = (TextView) convertview.findViewById(R.id.item_date);
-        TextView item_disName = (TextView) convertview.findViewById(R.id.item_disName);
+        TextView item_date = (TextView) convertView.findViewById(R.id.item_date);
+        TextView item_disName = (TextView) convertView.findViewById(R.id.item_disName);
 
         //Data Set(ListViewItem)에서 position에 위치한 데이터 참조 획득
         ListViewItem listviewItem = listViewItemList.get(position);
@@ -51,7 +57,7 @@ public class ListViewAdapter extends BaseAdapter {
         item_date.setText(listviewItem.getItem_date());
         item_disName.setText(listviewItem.getItem_disName());
 
-        return convertview;
+        return convertView;
     }
 
     //지정한 위치(position)에 있는 데이터와 아이템(row)의 ID를 리턴 : 필수구현
@@ -87,5 +93,38 @@ public class ListViewAdapter extends BaseAdapter {
 
         listViewItemList.add(item);
         notifyDataSetChanged();
+    }
+
+    public void init(){
+        listViewItemList.clear();
+    }
+
+    //http://croute.me/446
+    public void onClick(View v){
+        int position = (Integer)v.getTag();
+        ListViewItem item = listViewItemList.get(position);
+
+        //Bundle extras = new Bundle();
+        //extras.putString("date", item.getItem_date());
+        //extras.putString("name", item.getItem_disName());
+
+        //Intent intent = new Intent(mcontext, RecordItemClick.class);
+        //intent.putExtras(extras);
+
+        //mcontext.startActivity(intent);
+
+        View dialogView = (View)View.inflate(mcontext, R.layout.record_item_click, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mcontext);
+        builder.setTitle("처방목록");
+        builder.setView(dialogView);
+
+        TextView tvdate = (TextView)dialogView.findViewById(R.id.textView);
+        TextView tvname = (TextView)dialogView.findViewById(R.id.textView2);
+
+        tvdate.setText(item.getItem_date());
+        tvname.setText(item.getItem_disName());
+
+        builder.show();
     }
 }
