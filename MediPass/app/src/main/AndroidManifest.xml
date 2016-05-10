@@ -5,7 +5,7 @@
     <uses-feature android:name="android.hardware.nfc" android:required="true"/>
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.BIND_NFC_SERVICE"/>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -53,7 +53,6 @@
         <activity android:name=".Record"/>
         <activity android:name=".RecordList"/>
         <activity android:name=".RecordCal"/>
-        <activity android:name=".RecordItemClick"/>
         <activity android:name=".HospitalNfc">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>

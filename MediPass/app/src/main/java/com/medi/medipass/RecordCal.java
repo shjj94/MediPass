@@ -73,7 +73,7 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
         for(int i=0;i<num;i++) {
             Log.d("CAL", "selectedDate : " + getSelectedDatesString() + " / phpDate : " + dateArrayList.get(i) + " / phpName : " + nameArrayList.get(i));
             if(dateArrayList.get(i).equals(getSelectedDatesString())) {
-                adapter.addItemv(dateArrayList.get(i), nameArrayList.get(i));
+                adapter.addItem(dateArrayList.get(i), nameArrayList.get(i));
             }
         }
     }
