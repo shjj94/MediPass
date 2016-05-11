@@ -25,6 +25,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,8 +40,10 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
 
     final ListViewAdapter adapter = new ListViewAdapter();
 
-    String p_date [] = new String[] {"", "", "", "", "", "", "", "", "", ""};
-    String p_name [] = new String[] {"", "", "", "", "", "", "", "", "", ""};
+    private static ArrayList<String> dateArrayList;
+    private static ArrayList<String> nameArrayList;
+    //String p_date [] = new String[] {"", "", "", "", "", "", "", "", "", ""};
+    //String p_name [] = new String[] {"", "", "", "", "", "", "", "", "", ""};
     int num=0;
 
     @Override
@@ -58,21 +61,24 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
         gPHP = new GettingPHP();
         gPHP.execute(url);
 
+        dateArrayList = new ArrayList<String>();
+        nameArrayList = new ArrayList<String>();
+
         return view;
     }
 
     @Override
     public void onDateSelected(@NonNull MaterialCalendarView widget, @Nullable CalendarDay date, boolean selected) {
         Log.d("CAL", "selectDate : " + getSelectedDatesString() + "ddd");
+        adapter.init();
         for(int i=0;i<num;i++) {
-            Log.d("CAL", "selectedDate : " + getSelectedDatesString() + " / phpDate : " + p_date[i] + " / phpName : " + p_name[i]);
-            if(p_date[i].equals(getSelectedDatesString())) {
+            Log.d("CAL", "selectedDate : " + getSelectedDatesString() + " / phpDate : " + dateArrayList.get(i) + " / phpName : " + nameArrayList.get(i));
+            if(dateArrayList.get(i).equals(getSelectedDatesString())) {
                 //Log.d("CAL", "같아유 / " + p_date[i]);
-                adapter.addItemv(p_date[i], p_name[i]);
+                adapter.addItem(dateArrayList.get(i), nameArrayList.get(i));
             }
         }
     }
-
 
     private String getSelectedDatesString() {
         CalendarDay date = widget.getSelectedDate();
@@ -136,8 +142,8 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
                 for(int i=0;i<results.length();i++){ //length->child의 갯수
                     JSONObject temp = results.getJSONObject(i);
                     Log.d("CAL", "name : " + temp.getString("disease_name") + " date : " + temp.getString("record_date_cal"));
-                    p_date[j] = temp.getString("record_date_cal");
-                    p_name[j] = temp.getString("disease_name");
+                    dateArrayList.add(temp.getString("record_date_cal"));
+                    nameArrayList.add(temp.getString("disease_name"));
                     j++;
                 }
                 num = j;

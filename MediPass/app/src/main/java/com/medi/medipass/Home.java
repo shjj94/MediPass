@@ -1,7 +1,6 @@
 package com.medi.medipass;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,8 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hojung.nfc.HojungNFCReadLibrary;
@@ -58,7 +55,21 @@ public class Home extends AppCompatActivity {
 
         home_activity = Home.this;// 현재 activity를 변수에 넣는다.
         mContext = this;
-        final Dialog dialog = new Dialog(Home.this);
+        //final Dialog dialog = new Dialog(Home.this);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("병원입니다")
+                .setMessage("NFC스티커에 태그해주세요.")        // 메세지 설정
+                .setCancelable(false)        // 뒤로 버튼 클릭시 취소 가능 설정
+                .setNegativeButton("취소", new DialogInterface.OnClickListener(){
+                    // 취소 버튼 클릭시 설정
+                    public void onClick(DialogInterface dialog, int whichButton){
+                        dialog.cancel();
+                    }
+                });
+
+        final AlertDialog dialog = builder.create();
 
         backPressCloseHandler = new BackPressCloseHandler(this);// 뒤로가기 버튼 객체 생성
 
@@ -151,9 +162,11 @@ public class Home extends AppCompatActivity {
                 startActivity(intent_receipt);*/
                 //hospital_activity=HospitalNfc.this;
                 recptClicked = true;
+                /*
 //                Dialog dialog = new Dialog(Home.this);
                 dialog.setContentView(R.layout.treat_recept);
                 dialog.setTitle("병원");
+                //dialog.setMessage("앱을 종료 하시 겠습니까?");        // 메세지 설정
 
                 TextView tv = (TextView) dialog.findViewById(R.id.text);
                 tv.setText("NFC스티커에 태그해주세요");
@@ -162,6 +175,10 @@ public class Home extends AppCompatActivity {
                 iv.setImageResource(R.drawable.hosp);
 
                 dialog.show();
+                */
+
+                    // 알림창 객체 생성
+                dialog.show();    // 알림창 띄우기
             }
         });
 
