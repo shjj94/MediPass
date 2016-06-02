@@ -50,10 +50,10 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".MyPageLogInfo"/>
+        <activity android:name=".MyPage"/>
         <activity android:name=".Record"/>
         <activity android:name=".RecordList"/>
         <activity android:name=".RecordCal"/>
-        <activity android:name=".HospitalNfc">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -68,7 +68,6 @@
                 <action android:name="android.nfc.action.TAG_DISCOVERED"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
-        </activity>
 
 
         <activity android:name=".SubmitPrescription">
