@@ -16,7 +16,12 @@
             android:id="@+id/home_receipt"
             android:background="@drawable/back_receipt"
             android:layout_margin="5dp"
-            android:text="접수하기"
+            android:text="진료 접수"
+            android:padding="10dp"
+            android:textSize="17dp"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:layout_alignParentEnd="false" />
         <Button
             android:layout_width="150dp"
@@ -26,13 +31,23 @@
             android:layout_margin="5dp"
             android:layout_toRightOf="@id/home_receipt"
             android:text="처방전 제출"
-            android:layout_alignParentEnd="true" />
+            android:padding="10dp"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_alignParentEnd="true"
+            android:textSize="17dp" />
         <Button
             android:layout_width="150dp"
             android:layout_height="135dp"
             android:id="@+id/home_mypage"
             android:background="@drawable/back_mypage"
             android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            android:textSize="17dp"
+            android:gravity="left"
             android:layout_toRightOf="@id/home_receipt"
             android:layout_below="@id/home_submit"
             android:text="마이페이지"/>
@@ -40,9 +55,14 @@
             android:layout_width="150dp"
             android:layout_height="100dp"
             android:id="@+id/home_record"
-            android:background="#092e91"
+            android:background="@drawable/back_record"
             android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:layout_below="@id/home_receipt"
+            android:padding="10dp"
+            android:textSize="17dp"
+            android:gravity="left"
             android:text="진료기록"/>
         <Button
             android:layout_width="300dp"
@@ -50,8 +70,13 @@
             android:id="@+id/home_check_number"
             android:background="@drawable/back_wait"
             android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
             android:layout_below="@id/home_record"
-            android:text="대기인원 확인"/>
+            android:text="대기인원 확인"
+            android:padding="10dp"
+            android:textSize="17dp"
+            android:gravity="left"/>
 
     </RelativeLayout>
 

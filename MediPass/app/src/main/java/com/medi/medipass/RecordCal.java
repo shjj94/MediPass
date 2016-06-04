@@ -1,6 +1,7 @@
 package com.medi.medipass;
 
 import android.app.AlertDialog;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -32,6 +33,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -43,7 +45,10 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
     String url_medicine = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/write_medicine.php";
     GettingPHP gPHP;
 
-    @Bind(R.id.calendarView) MaterialCalendarView widget;
+    ArrayList<CalendarDay> dates = new ArrayList<>();;
+
+    @Bind(R.id.calendarView)
+    MaterialCalendarView widget;
 
     final ListViewAdapter adapter = new ListViewAdapter();
 
@@ -187,12 +192,27 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
                 if(jobject.get("status").equals("list")) {
                     Log.d("HHH", "list");
                     int j=0;
+                    //Calendar calendar = Calendar.getInstance();
                     for(int i=0;i<results.length();i++){ //length->child의 갯수
                         JSONObject temp = results.getJSONObject(i);
+
+                        //http://hyeonstorage.tistory.com/205
+                        Calendar calendar = Calendar.getInstance();
+                        Log.d("ddd", temp.getString("date_cal").substring(0, 4) + " + " + temp.getString("date_cal").substring(4, 6) + " + " + temp.getString("date_cal").substring(6, 8));
+                        calendar.set(Integer.parseInt(temp.getString("date_cal").substring(0, 4)),
+                                Integer.parseInt(temp.getString("date_cal").substring(4, 6))-1,
+                                Integer.parseInt(temp.getString("date_cal").substring(6, 8)));
+
+                        CalendarDay day = CalendarDay.from(calendar);
+                        Log.d("ddd", "day : " + day);
+
+                        dates.add(day);
+
                         dateArrayList.add(temp.getString("record_date"));
                         nameArrayList.add(temp.getString("disease_name"));
                         j++;
                     }
+                    widget.addDecorator(new EventDecorator(Color.RED, dates));
                     num = j;
                 }
 

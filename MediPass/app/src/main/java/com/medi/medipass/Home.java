@@ -119,6 +119,14 @@ public class Home extends AppCompatActivity {
         final Button bt_receipt = (Button) findViewById(R.id.home_receipt);
         Button bt_submit = (Button) findViewById(R.id.home_submit);
 
+        //Typeface typeFace = Typeface.createFromAsset(getAssets(), "저장되어있는폰트파일"));
+        //텍스트뷰.setTypeface(typeFace);
+//        Typeface typeFace = Typeface.createFromAsset(getAssets(), "yoongodic");
+//        bt_record.setTypeface(typeFace);
+//        bt_myPage.setTypeface(typeFace);
+//        bt_receipt.setTypeface(typeFace);
+//        bt_submit.setTypeface(typeFace);
+//        bt_waitList.setTypeface(typeFace);
 
         bt_record.setOnClickListener(new View.OnClickListener() {
             @Override
