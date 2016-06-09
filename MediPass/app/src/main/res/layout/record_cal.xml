@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#F6F6F6">
 
     <com.prolificinteractive.materialcalendarview.MaterialCalendarView
         android:id="@+id/calendarView"
@@ -12,14 +13,14 @@
         android:layout_weight="0.38" />
 
     <ListView
+        android:id="@+id/listview_cal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview_cal"
+        android:layout_below="@+id/calendarView"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_below="@+id/calendarView"
-        android:layout_centerHorizontal="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

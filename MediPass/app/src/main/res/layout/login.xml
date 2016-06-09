@@ -8,40 +8,42 @@
         android:id="@+id/join_logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/logo"
         android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="65dp"
-        android:layout_marginBottom="10dp"/>
+        android:src="@drawable/logo" />
 
     <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
         android:id="@+id/edit_login_id"
-        android:layout_gravity="center"
-        android:hint="ID"
-        android:layout_marginBottom="5dp" />
-    <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:hint="ID" />
+
+    <EditText
         android:id="@+id/edit_login_pw"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
         android:hint="PW" />
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:text="Login"
         android:id="@+id/bt_login"
-        android:layout_gravity="center"
-        android:background="#5e5e5e"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="10dp"/>
-    <Button
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Join"
-        android:id="@+id/bt_join"
         android:layout_gravity="center"
-        android:background="#e0e0e0"/>
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="60dp"
+        android:background="#5e5e5e"
+        android:text="Login" />
+
+    <Button
+        android:id="@+id/bt_join"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="#e0e0e0"
+        android:text="Join" />
 
 </LinearLayout>

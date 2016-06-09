@@ -1,0 +1,45 @@
+<?php
+   error_reporting(E_ALL& ~E_NOTICE); //에러 기록
+   ini_set("display_errors", 1); //에러메세지 노출 1:활성화 0:비활성화
+
+   //공통사항
+   include_once("../dbConnect-medipass.php");
+   header('Content-Type:text/html; charset=utf-8');
+
+   //환자정보
+
+   $id = "so";
+   $hospital_code= $_POST['hospital_code'];
+   $my_wait_num=$_POST['my_wait_num'];
+   //쿼리문-행 수 카운트
+   $sql = "SELECT * FROM WAIT_LIST WHERE hospital_code='$hospital_code' AND wait_num<='$my_wait_num'";
+
+   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+   //insert, delete - true false    select - select 값
+   $num = mysqli_num_rows($result);
+   echo $num;
+
+   mysqli_close($conn);
+?>
+
+[2013111539@Condi medipass]$ cat submit_prescription.php
+<?php
+   error_reporting(E_ALL);//모든 에러를 기록한다.
+   ini_set("display_errors", 1);//에러 메세지를 화면에 노출. 1:활성화/0:비활성화
+
+   include_once("../dbConnect-medipass.php");
+   header('Content-Type:text/html; charset=utf-8');
+
+   $id = "so";
+   $presnum= $_POST['presnum'];
+   $pharm_code=$_POST['pharm_code'];
+
+   $sql = "UPDATE MEDICAL_RECORD SET is_used ='1', pharm_code='$pharm_code' WHERE user_id='$id' AND prescription_num='$presnum'";
+   //처방전 제출 : 사용시 1
+
+   //쿼리 성공시 쿼리 리소스 가져옴
+   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+   //반환된 전체 레코드 수 저장
+
+   mysqli_close($conn);
+?>

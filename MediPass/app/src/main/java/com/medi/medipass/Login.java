@@ -21,8 +21,8 @@ public class Login extends AppCompatActivity {
         backPressCloseHandler = new BackPressCloseHandler(this);// 뒤로가기 버튼 객체 생성성
 
         /* 로그인하기, 회원가입하기 버튼 등록 */
-        Button bt_login = (Button)findViewById(R.id.bt_login);
-        Button bt_join = (Button)findViewById(R.id.bt_join);
+        Button bt_login = (Button) findViewById(R.id.bt_login);
+        Button bt_join = (Button) findViewById(R.id.bt_join);
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity {
 
     /* 뒤로가기 버튼 동작 시, 두번 눌러야 꺼지게 */
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         backPressCloseHandler.onBackPressred();
     }
 }

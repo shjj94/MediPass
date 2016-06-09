@@ -3,6 +3,8 @@ package com.medi.medipass;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ListView;
@@ -20,8 +22,10 @@ import java.net.URL;
  * Created by Elizabeth on 2016-04-07.
  */
 
-public class WaitList extends AppCompatActivity {
+public class WaitList extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     /* 로그인 안하고 대기인원 확인하기 */
+    SwipeRefreshLayout mSwipeRefreshLayout;//새로고침
+    ListView listView;
 
     //data를 받아올 php주소
     String url_hosinfo = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/all_hosinfo.php";
@@ -37,7 +41,11 @@ public class WaitList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wait_list);
 
-        final ListView listView=(ListView)findViewById(R.id.waitlist);
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh_wait);//새로고침
+        mSwipeRefreshLayout.setOnRefreshListener(this);
+
+
+        listView = (ListView) findViewById(R.id.waitlist);
         //리스트뷰 참조 및 Adapter달기
         listView.setAdapter(adapter);
 
@@ -48,6 +56,23 @@ public class WaitList extends AppCompatActivity {
     }
 
 
+    //새로고침
+    @Override
+    public void onRefresh() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                adapter.init();
+                adapter.notifyDataSetChanged();
+                //해당 어댑터를 서버와 통신한 값이 나오면 됨
+                GettingPHP gPHP = new GettingPHP();
+                gPHP.execute(url_hosinfo);
+                listView.setAdapter(adapter);
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
+    }
 
     //AsyncTask : thread + handler
     //Async(비동기화) : 병렬회로. 계속 요청을 보내는 통로와 응답을 받는 통로를 따로 만들어두는 것

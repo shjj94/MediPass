@@ -19,12 +19,12 @@ public class ListViewAdapter_medicine extends BaseAdapter {
     private ArrayList<ListViewItem_medicine> listViewItemList_medicine = new ArrayList<ListViewItem_medicine>();
 
     //ListViewAdapter의 생성자
-    public ListViewAdapter_medicine(){
+    public ListViewAdapter_medicine() {
     }
 
     //Adapter에 사용되는 데이터의 개수를 리턴 : 필수구현
     @Override
-    public int getCount(){
+    public int getCount() {
         return listViewItemList_medicine.size();
     }
 
@@ -59,18 +59,18 @@ public class ListViewAdapter_medicine extends BaseAdapter {
 
     //지정한 위치(position)에 있는 데이터와 아이템(row)의 ID를 리턴 : 필수구현
     @Override
-    public long getItemId(int position){
+    public long getItemId(int position) {
         return position;
     }
 
     //지정한 위치(position)에 있는 데이터 리턴 : 필수구현
     @Override
-    public Object getItem(int position){
+    public Object getItem(int position) {
         return listViewItemList_medicine.get(position);
     }
 
     //아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String medName, int onceNum, int dayNum, String notice){
+    public void addItem(String medName, int onceNum, int dayNum, String notice) {
         ListViewItem_medicine item = new ListViewItem_medicine();
 
         item.setMedName(medName);
@@ -82,7 +82,7 @@ public class ListViewAdapter_medicine extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void init(){
+    public void init() {
         listViewItemList_medicine.clear();
     }
 

@@ -2,74 +2,81 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:layout_marginTop="40dp"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_weight="1"
         android:background="#e0e0e0"
-        android:padding="15dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="100dp">
+        android:padding="15dp">
+
         <Button
+            android:id="@+id/mypage_info"
             android:layout_width="150dp"
             android:layout_height="300dp"
-            android:id="@+id/mypage_info"
-            android:background="#82bfe8"
             android:layout_margin="5dp"
-            android:text="로그인 정보"/>
+            android:background="#82bfe8"
+            android:text="로그인 정보" />
+
         <Button
+            android:id="@+id/mypage_notice"
             android:layout_width="150dp"
             android:layout_height="120dp"
-            android:id="@+id/mypage_notice"
-            android:background="#3498db"
             android:layout_margin="5dp"
             android:layout_toRightOf="@id/mypage_info"
-            android:text="공지사항"/>
+            android:background="#3498db"
+            android:text="공지사항" />
+
         <Button
+            android:id="@+id/mypage_version"
             android:layout_width="150dp"
             android:layout_height="180dp"
-            android:id="@+id/mypage_version"
-            android:background="#7f7f7f"
+            android:layout_below="@id/mypage_notice"
             android:layout_margin="5dp"
             android:layout_toRightOf="@id/mypage_info"
-            android:layout_below="@id/mypage_notice"
-            android:text="도움말\n버전정보"/>
+            android:background="#7f7f7f"
+            android:text="도움말\n버전정보" />
     </RelativeLayout>
 
     <LinearLayout
         android:id='@+id/bottom_menu_bar'
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="#e0e0e0"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="#D4F4FA">
+
         <Button
             android:id='@+id/bottom_mypage_record'
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selector"
             android:text="진료기록"
-            android:textSize="50px"
-            android:background="@drawable/selector"></Button>
+            android:textSize="20dp"></Button>
+
         <Button
             android:id="@+id/bottom_mypage_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selector"
             android:text="홈"
-            android:textSize="50px"
-            android:background="@drawable/selector"></Button>
+            android:textSize="20dp"></Button>
+
         <Button
             android:id="@+id/bottom_mypage_mypage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selector"
             android:text="마이페이지"
-            android:textSize="50px"
-            android:background="@drawable/selector"></Button>
+            android:textSize="20dp"></Button>
     </LinearLayout>
 
 </LinearLayout>

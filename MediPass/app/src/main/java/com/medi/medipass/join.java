@@ -15,10 +15,10 @@ public class Join extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.join);
 
-        Button bt_back = (Button)findViewById(R.id.join_back);
-        bt_back.setOnClickListener(new View.OnClickListener(){
+        Button bt_back = (Button) findViewById(R.id.join_back);
+        bt_back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
             }
         });

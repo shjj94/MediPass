@@ -1,0 +1,49 @@
+<?php
+   error_reporting(E_ALL); //에러 기록
+   ini_set("display_errors", 1); //에러메세지 노출 1:활성화 0:비활성화
+
+   //공통사항
+   include_once("../dbConnect-medipass.php");
+   header('Content-Type:text/html; charset=utf-8');
+
+   //환자정보
+   $id = "so";
+
+   //쿼리문-행 수 카운트
+   $sql = "SELECT H.hospital_name, Count(W.wait_num) FROM HOSPITAL H, WAIT_LIST W WHERE H.hospital_code=W.hospital_code GROUP BY W.hospital_code";
+
+   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+   $total_record = $result->num_rows;
+
+   $result_array = array();
+
+   for($i=0;$i<$total_record;$i++){
+      //한 행씩 읽기 위해 offset을 준다
+      $result->data_seek($i);
+
+      //결과값을 배열로 바꾼다
+      $row = $result->fetch_array();
+      //결과값들을 JSON형식으로 넣기 위해 연관배열로 넣는다
+      $row_array = array(
+         "hospital_name" => $row['hospital_name'],
+         "wait_num" => $row['Count(W.wait_num)']
+      );
+      //한 행을 results에 넣을 배열의 끝에 추가한다
+      array_push($result_array, $row_array);
+   }
+
+   //위에서 얻은 결과를 다시 JSON형식으로 넣는다
+   $arr = array(
+      "status" => "listw",
+      "num_result" => $total_record,
+      "results" => $result_array
+   );
+
+   //만든건 그냥 배열이므로 JSON형식으로 인코딩한다
+   $json_array = json_encode($arr);
+
+   //JSON배열 출력
+   print_r($json_array);
+
+   mysqli_close($conn);
+?>

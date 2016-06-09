@@ -20,28 +20,30 @@ public class WaitListAdapter extends BaseAdapter {
     private ArrayList<WaitListItem> waitItemList = new ArrayList<WaitListItem>();
 
     //WaitListAdapter 생성자
-    public WaitListAdapter(){
+    public WaitListAdapter() {
     }
 
     //Adapter에 사용되는 데이터의 개수를 리턴 : 필수구현
     @Override
-    public int getCount(){
+    public int getCount() {
         return waitItemList.size();
     }
 
     //지정한 위치(position)에 있는 데이터와 아이템(row)의 ID를 리턴 : 필수구현
     @Override
-    public long getItemId(int position){return position;}
+    public long getItemId(int position) {
+        return position;
+    }
 
     //지정한 위치(position)에 있는 데이터 리턴 : 필수구현
     @Override
-    public Object getItem(int position){
+    public Object getItem(int position) {
         return waitItemList.get(position);
     }
 
 
     //아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String hosname, String waitnum){
+    public void addItem(String hosname, String waitnum) {
         Log.d("PHP", "addItem");
         WaitListItem item = new WaitListItem(hosname, waitnum);
 
@@ -52,7 +54,7 @@ public class WaitListAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void init(){
+    public void init() {
         waitItemList.clear();
     }
 

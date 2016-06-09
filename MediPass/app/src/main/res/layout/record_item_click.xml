@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="date"
-        android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="15dp"
         android:layout_marginTop="15dp"
-        android:textSize="30dp"
-        android:layout_marginBottom="15dp" />
+        android:text="date"
+        android:textSize="30dp" />
+
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" 약품명칭    1회   1일    주의사항  "
-        android:id="@+id/textView2"
         android:layout_gravity="center_horizontal"
+        android:background="#e0e0e0"
         android:gravity="center"
-        android:textSize="20dp"
-        android:background="#e0e0e0" />
+        android:text=" 약품명칭    1회   1일    주의사항  "
+        android:textSize="20dp" />
 
     <ListView
+        android:id="@+id/record_item_click_listView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/record_item_click_listView"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:layout_marginTop="5dp" />
 
 </LinearLayout>

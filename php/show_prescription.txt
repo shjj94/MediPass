@@ -1,0 +1,52 @@
+
+<?php
+   error_reporting(E_ALL);//모든 에러를 기록한다.
+   ini_set("display_errors", 1);//에러 메세지를 화면에 노출. 1:활성화/0:비활성화
+
+   include_once("../dbConnect-medipass.php");
+   header('Content-Type:text/html; charset=utf-8');
+
+   $id = "so";
+   //$id = $_POST['user_id'];
+   $sql = "SELECT DISTINCT M.prescription_num, date_format(T.record_date, '%Y. %c. %e.') as record_date, H.hospital_name, T.disease_name, M.valid_date FROM MEDICAL_RECORD M, TREAT_RECORD T , HOSPITAL H  WHERE T.hospital_code=H.hospital_code AND M.prescription_num=T.prescription_num AND M.is_used='0'";
+
+   //쿼리 성공시 쿼리 리소스 가져옴
+   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+   //반환된 전체 레코드 수 저장
+   $total_record = $result->num_rows;
+
+   $result_array = array();
+
+   for($i=0;$i<$total_record;$i++){
+      //한 행씩 읽기 위해 offset을 준다
+      $result->data_seek($i);
+
+      //결과값을 배열로 바꾼다
+      $row = $result->fetch_array();
+      //결과값들을 JSON형식으로 넣기 위해 연관배열로 넣는다
+      $row_array = array(
+         "record_date" => $row['record_date'],
+         "disease_name" => $row['disease_name'],
+         "hospital_name" => $row['hospital_name'],
+         "valid_date"=> $row['valid_date'],
+          "prescription_num" => $row['prescription_num']
+      );
+      //한 행을 results에 넣을 배열의 끝에 추가한다
+      array_push($result_array, $row_array);
+   }
+
+   //위에서 얻은 결과를 다시 JSON형식으로 넣는다
+   $arr = array(
+      "status" => "listp",
+      "num_result" => $total_record,
+      "results" => $result_array
+   );
+
+   //만든건 그냥 배열이므로 JSON형식으로 인코딩한다
+   $json_array = json_encode($arr);
+
+   //JSON배열 출력
+   print_r($json_array);
+
+   mysqli_close($conn);
+?>

@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,12 +34,18 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 //https://www.binpress.com/tutorial/android-l-recyclerview-and-cardview-tutorial/156
+
 /**
  * Created by Elizabeth on 2016-05-18.
  */
 
 //https://www.simplifiedcoding.net/android-recyclerview-and-cardview-tutorial/
-public class SubmitPrescription extends AppCompatActivity {
+public class SubmitPrescription extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
+
+    //http://ggari.tistory.com/528
+    SwipeRefreshLayout mSwipeRefreshLayout;//새로고침
+    ListView listView;
+
 
     String url_showPrescription = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/show_prescription.php";
     String url_submitPrescription = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/submit_prescription.php";
@@ -68,9 +76,11 @@ public class SubmitPrescription extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.submit_list);
 
+        mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);//새로고침
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         /*리스트*/
 //SubmitItem(String vTitle,String vDate, String vHospital, String vDisease)
-        ListView listView=(ListView)findViewById(R.id.submitlist);
+        listView = (ListView) findViewById(R.id.submitlist);
 
         //리스트뷰 참조 및 Adapter달기
         listView.setAdapter(adapter);
@@ -78,6 +88,7 @@ public class SubmitPrescription extends AppCompatActivity {
         //php를 읽어올때 사용할 변수
         GettingPHP gPHP = new GettingPHP();
         gPHP.execute(url_showPrescription);
+
 
 //        ArrayList<SubmitItem> data=new ArrayList<>();
 //        SubmitItem write=new SubmitItem("2016/05/05","~2016/05/08","가나병원","감기");
@@ -112,13 +123,13 @@ public class SubmitPrescription extends AppCompatActivity {
         backPressCloseHandler = new BackPressCloseHandler(this);// 뒤로가기 버튼 객체 생성
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id){
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
                 submitClicked = true; //다이얼로그 떠있는 상태일 때에만 태그 동작하기 위한 bool값
                 SubmitItem item = (SubmitItem) parent.getItemAtPosition(position);
-                presnum=item.getDisease();
-
+                presnum = item.getPrescription();
+                Log.d("PRES", "presnum : " + presnum);
                 dialog.show();
             }
         });
@@ -201,8 +212,10 @@ public class SubmitPrescription extends AppCompatActivity {
 
                         /*태그 정보*/
                         Log.d("NFC", "type" + models[0].getTypeStr() + "payload : " + models[0].getPayloadStr());
-                        pharm_code=models[0].getPayloadStr();
-                        Log.d("NFC", "pharm_code:"+pharm_code);
+                        pharm_code = models[0].getPayloadStr();
+                        Log.d("NFC", "pharm_code:" + pharm_code);
+                    } else if (submitClicked == false && spot.equals("pharmacy")) {
+                        Toast.makeText(SubmitPrescription.this, "처방전을 클릭해주세요.", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(SubmitPrescription.this, "처방전 제출 버튼입니다. 접수하기 버튼을 눌러주세요.", Toast.LENGTH_SHORT).show();
                     }
@@ -224,6 +237,23 @@ public class SubmitPrescription extends AppCompatActivity {
     }
 
 
+    //새로고침
+    @Override
+    public void onRefresh() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                adapter.init();
+                adapter.notifyDataSetChanged();
+                //해당 어댑터를 서버와 통신한 값이 나오면 됨
+                GettingPHP gPHP = new GettingPHP();
+                gPHP.execute(url_showPrescription);
+                listView.setAdapter(adapter);
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
+    }
 
     private void initNFC() {
         try {
@@ -272,19 +302,18 @@ public class SubmitPrescription extends AppCompatActivity {
     }
 
 
-
     /*처방전 제출하기*/
     public void submitPrescription() {
         GettingPHP gPHP = new GettingPHP();
         gPHP.execute(url_submitPrescription);
+        Log.d("Pharmcode","Pharmcode : "+pharm_code);
         registePharm();
     }
 
-    public void registePharm(){
+    public void registePharm() {
         GettingPHP gPHP = new GettingPHP();
         gPHP.execute(url_registerPharm);
     }
-
 
 
     //AsyncTask : thread + handler
@@ -309,9 +338,9 @@ public class SubmitPrescription extends AppCompatActivity {
                 HttpURLConnection conn = (HttpURLConnection) phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
 
                 if (conn != null) {
-                    if (params[0].equals(url_submitPrescription)) {
-                        Log.d("NFC", "pharm_code11:"+pharm_code);
-                        String data = "presnum=" + presnum+"& pharm_code="+pharm_code;
+                    //if (params[0].equals(url_submitPrescription)) {
+                        Log.d("NFC", "pharm_code11:" + pharm_code);
+                        String data = "presnum=" + presnum + "& pharm_code=" + pharm_code;
                         Log.d(PHP, data);
                         conn.setReadTimeout(10000);
                         conn.setConnectTimeout(5000);
@@ -329,28 +358,28 @@ public class SubmitPrescription extends AppCompatActivity {
 
                         //post메세지가 전송된다
                         conn.connect();
-                    }else if(params[0].equals(url_registerPharm)){
-                        String data = "pharm_code="+pharm_code;
-                        Log.d(PHP, "data " + data);
-                        conn.setReadTimeout(10000);
-                        conn.setConnectTimeout(5000);
-                        conn.setRequestMethod("POST");
-                        conn.setDoInput(true);
-                        conn.setDoOutput(true);
-                        //conn.setRequestProperty("Content-Type", "application/json");
-                        conn.setUseCaches(false);
-
-                        OutputStream os = conn.getOutputStream();
-                        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-                        bw.write(data);
-                        bw.flush();
-                        bw.close();
-                        Log.d(PHP, "data push end" + data);
-
-                        //post메세지가 전송된다
-                        conn.connect();
-
-                    }
+//                    } else if (params[0].equals(url_registerPharm)) {
+//                        String data = "pharm_code=" + pharm_code;
+//                        Log.d(PHP, "data " + data);
+//                        conn.setReadTimeout(10000);
+//                        conn.setConnectTimeout(5000);
+//                        conn.setRequestMethod("POST");
+//                        conn.setDoInput(true);
+//                        conn.setDoOutput(true);
+//                        //conn.setRequestProperty("Content-Type", "application/json");
+//                        conn.setUseCaches(false);
+//
+//                        OutputStream os = conn.getOutputStream();
+//                        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+//                        bw.write(data);
+//                        bw.flush();
+//                        bw.close();
+//                        Log.d(PHP, "data push end" + data);
+//
+//                        //post메세지가 전송된다
+//                        conn.connect();
+//
+//                    }
 
                     if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -388,11 +417,12 @@ public class SubmitPrescription extends AppCompatActivity {
                         String hos_name = temp.getString("hospital_name");
                         String pres_num = temp.getString("prescription_num");
                         String dis_name = temp.getString("disease_name");
-                        adapter.addItem(date, valid_date, hos_name, pres_num, dis_name);
+                        adapter.addItem(date, valid_date, hos_name, dis_name, pres_num);
 
                     }
                 }
 
+                adapter.notifyDataSetChanged();
             } catch (JSONException e) {
                 e.printStackTrace();
             }

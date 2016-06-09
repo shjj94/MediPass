@@ -43,20 +43,20 @@ public class SubmitItem {
         this.vDisease = vDisease;
     }
 
-    public String getPrescription(){
+    public String getPrescription() {
         return vPrescription;
     }
 
-    public void setPrescription (String vPrescription) {
+    public void setPrescription(String vPrescription) {
         this.vPrescription = vPrescription;
     }
 
-    public SubmitItem(String vTitle,String vDate, String vHospital, String vDisease, String vPrescription){
-        this.vTitle=vTitle;
-        this.vDate=vDate;
-        this.vHospital=vHospital;
-        this.vDisease=vDisease;
-        this.vPrescription=vPrescription;
+    public SubmitItem(String vTitle, String vDate, String vHospital, String vDisease, String vPrescription) {
+        this.vTitle = vTitle;
+        this.vDate = vDate;
+        this.vHospital = vHospital;
+        this.vDisease = vDisease;
+        this.vPrescription = vPrescription;
     }
 
 }

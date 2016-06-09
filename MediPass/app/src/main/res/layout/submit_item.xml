@@ -3,152 +3,181 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/submit_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:id="@+id/submit_item"
-        >
+        android:layout_marginBottom="10dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#eee">
+                android:background="#eee"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="55dp"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
+                    android:layout_marginBottom="1dp"
                     android:background="#fff"
-                    android:layout_marginBottom="1dp">
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
 
                     <ImageView
+                        android:id="@+id/imageView"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:id="@+id/imageView"
+                        android:layout_alignParentEnd="false"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/hosp"
-                        android:layout_alignParentEnd="false" />
+                        android:src="@drawable/back_pharm" />
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/imageView"
-                        android:layout_toLeftOf="@+id/imageView2"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp">
+                        android:layout_marginRight="10dp"
+                        android:layout_toRightOf="@+id/imageView"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceMedium"
-                            android:text="X월X일 진료"
-                            android:id="@+id/tv_title"
-                            android:textSize="16dp" />
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="진료일 : " />
+
+                            <TextView
+                                android:id="@+id/tv_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="X월X일"
+                                android:textAppearance="?android:attr/textAppearanceMedium"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAppearance="?android:attr/textAppearanceSmall"
-                            android:text="~X월X일까지"
-                            android:id="@+id/tv_date"
-                            android:textSize="13dp" />
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="처방전 발급 잔여일 : " />
+
+                            <TextView
+                                android:id="@+id/tv_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="X월X일"
+                                android:textAppearance="?android:attr/textAppearanceSmall"
+                                android:textSize="13dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=" 일" />
+                        </LinearLayout>
+
                     </LinearLayout>
 
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="18dp"
-                        android:id="@+id/imageView2"
-                        android:src="@drawable/hosp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true" />
 
                 </RelativeLayout>
             </LinearLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/rl_image">
+                android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/iv_image"
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/iv_image" />
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
 
             <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ddd">
+                android:background="#ddd"
+                android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="16dp"
+                    android:layout_marginBottom="1dp"
                     android:background="#fff"
-                    android:layout_marginBottom="1dp">
+                    android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/tv_hospital"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="XX병원"
-                        android:id="@+id/tv_hospital" />
+                        android:text="XX병원" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text = "질병 이름"
-                        android:layout_toRightOf="@+id/tv_hospital"
                         android:id="@+id/tv_disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:gravity="right" />
+                        android:layout_toRightOf="@+id/tv_hospital"
+                        android:gravity="right"
+                        android:text="질병 이름" />
                 </RelativeLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ddd">
+                android:background="#ddd"
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:background="#fff"
                     android:layout_marginBottom="1dp"
+                    android:background="#fff"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp">
 
                     <ImageView
+                        android:id="@+id/imageView3"
                         android:layout_width="15dp"
                         android:layout_height="15dp"
-                        android:id="@+id/imageView3"
                         android:layout_centerVertical="true"
-                        android:src="@drawable/hosp" />
+                        android:src="@drawable/back_hh" />
 
                     <TextView
+                        android:id="@+id/aa"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:text="12345678"
-                        android:id="@+id/tv_presnum"
-                        android:layout_toRightOf="@+id/imageView3"
                         android:layout_centerVertical="true"
-                        android:layout_marginLeft="5dp" />
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/imageView3"
+                        android:text="처방전번호 : " />
+
+                    <TextView
+                        android:id="@+id/tv_presnum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/aa"
+                        android:text="12345678"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 
                 </RelativeLayout>

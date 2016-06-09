@@ -1,0 +1,26 @@
+오후 4:54 2016-06-01<?php
+
+   //진료기록에 이름 올리기
+
+   error_reporting(E_ALL); //에러 기록
+   ini_set("display_errors", 1); //에러메세지 노출 1:활성화 0:비활성화
+
+   //공통사항
+   include_once("../dbConnect-medipass.php");
+   header('Content-Type:text/html; charset=utf-8');
+
+   //환자정보 , 대기정보
+   $id = "so";
+   $pharm_code= $_POST['pharm_code'];
+
+   //$hos_code="1";
+   //echo "$hos_code";
+
+   //쿼리문
+   $sql = "insert into WAIT_LIST_PHARM(pharm_code, user_id)  values ('$pharm_code','$id')";
+
+   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+
+   mysqli_close($conn);
+   echo "submit OK";
+?>

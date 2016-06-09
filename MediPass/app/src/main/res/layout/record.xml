@@ -7,37 +7,42 @@
 
 
     <LinearLayout
+        android:id="@+id/frag_record"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:id="@+id/frag_record"
         android:orientation="vertical">
+
         <LinearLayout
             android:id='@+id/up_menu_bar'
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#e0e0e0"
             android:orientation="horizontal">
+
             <Button
                 android:id="@+id/up_menu_list"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="리스트"
-                android:background="@drawable/selector" />
+                android:background="@drawable/selector"
+                android:text="리스트" />
+
             <Button
                 android:id="@+id/up_menu_cal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="캘린더"
-                android:background="@drawable/selector" /></LinearLayout>
+                android:background="@drawable/selector"
+                android:text="캘린더" />
+        </LinearLayout>
+
         <FrameLayout
+            android:id="@+id/ll_fragment_record"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/ll_fragment_record"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical"></FrameLayout>
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"></FrameLayout>
     </LinearLayout>
 
 
@@ -45,32 +50,35 @@
         android:id='@+id/bottom_menu_bar'
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="#e0e0e0"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="#e0e0e0">
+
         <Button
             android:id='@+id/bottom_record_record'
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selector"
             android:text="진료기록"
-            android:textSize="50px"
-            android:background="@drawable/selector"></Button>
+            android:textSize="20dp"></Button>
+
         <Button
             android:id="@+id/bottom_record_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selector"
             android:text="홈"
-            android:textSize="50px"
-            android:background="@drawable/selector"></Button>
+            android:textSize="20dp"></Button>
+
         <Button
             android:id="@+id/bottom_record_mypage"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/selector"
             android:text="마이페이지"
-            android:textSize="50px"
-            android:background="@drawable/selector"></Button>
+            android:textSize="20dp"></Button>
     </LinearLayout>
 
 

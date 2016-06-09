@@ -45,7 +45,8 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
     String url_medicine = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/write_medicine.php";
     GettingPHP gPHP;
 
-    ArrayList<CalendarDay> dates = new ArrayList<>();;
+    ArrayList<CalendarDay> dates = new ArrayList<>();
+
 
     @Bind(R.id.calendarView)
     MaterialCalendarView widget;
@@ -54,7 +55,7 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
 
     private static ArrayList<String> dateArrayList = new ArrayList<String>();
     private static ArrayList<String> nameArrayList = new ArrayList<String>();
-    int num=0;
+    int num = 0;
 
     ListViewAdapter_medicine med_adapter = new ListViewAdapter_medicine();
     static String date, disName;
@@ -66,20 +67,20 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
         ButterKnife.bind(this, view);
         widget.setOnDateChangedListener(this);
 
-        final ListView listview = (ListView)view.findViewById(R.id.listview_cal);
+        final ListView listview = (ListView) view.findViewById(R.id.listview_cal);
         listview.setAdapter(adapter);
 
         gPHP = new GettingPHP();
         gPHP.execute(url_list);
 
         //클릭 이벤트 정의
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id){
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
                 ListViewItem item = (ListViewItem) parent.getItemAtPosition(position);
 
-                View dialogView = (View)v.inflate(getContext(), R.layout.record_item_click, null);
-                ListView listview_med_cal = (ListView)dialogView.findViewById(R.id.record_item_click_listView);
+                View dialogView = (View) v.inflate(getContext(), R.layout.record_item_click, null);
+                ListView listview_med_cal = (ListView) dialogView.findViewById(R.id.record_item_click_listView);
                 listview_med_cal.setAdapter(med_adapter);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -94,7 +95,7 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
                 GettingPHP mPHP = new GettingPHP();
                 mPHP.execute(url_medicine);
 
-                TextView tvdate = (TextView)dialogView.findViewById(R.id.textView);
+                TextView tvdate = (TextView) dialogView.findViewById(R.id.textView);
                 tvdate.setText(item.getItem_date());
 
                 builder.show();
@@ -107,8 +108,8 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
     @Override
     public void onDateSelected(@NonNull MaterialCalendarView widget, @Nullable CalendarDay date, boolean selected) {
         adapter.init();
-        for(int i=0;i<num;i++) {
-            if(dateArrayList.get(i).equals(getSelectedDatesString())) {
+        for (int i = 0; i < num; i++) {
+            if (dateArrayList.get(i).equals(getSelectedDatesString())) {
                 adapter.addItem(dateArrayList.get(i), nameArrayList.get(i));
             }
         }
@@ -134,16 +135,16 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
         //execute메서드로 전달한 data tye이 params 인수로 전달되는데 여러개의 인수를 전달할 수 있으므로 배열 타입으로 되어 있다.
         //그래서 하나의 인수만 필요하다면 params[0]만 사용하면 된다.
         @Override
-        protected String doInBackground(String... params){
+        protected String doInBackground(String... params) {
             StringBuilder jsonHtml = new StringBuilder();
-            try{
+            try {
                 // URL --> openConnection() --> URLConnection  --> getInputStream --> InputStream (내용읽음)
                 URL phpUrl = new URL(params[0]);
-                HttpURLConnection conn = (HttpURLConnection)phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
+                HttpURLConnection conn = (HttpURLConnection) phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
 
-                if(conn != null){
-                    if(params[0].equals(url_medicine)){
-                        String data = "date="+date+"& disName="+disName;
+                if (conn != null) {
+                    if (params[0].equals(url_medicine)) {
+                        String data = "date=" + date + "& disName=" + disName;
                         Log.d("HHH", "data : " + data);
 
                         conn.setReadTimeout(10000);
@@ -163,18 +164,18 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
                         conn.connect();
                     }
 
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                        while(true){
+                        while (true) {
                             String line = br.readLine();
-                            if(line == null) break;
+                            if (line == null) break;
                             jsonHtml.append(line + "\n");
                         }
                         br.close();
                     }
                 }
                 conn.disconnect();
-            } catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return jsonHtml.toString();
@@ -182,25 +183,25 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
 
         //가져온 데이터를 이용해 원하는 일을 하도록 한다
         @Override
-        protected void onPostExecute(String str){
-            try{
+        protected void onPostExecute(String str) {
+            try {
                 //php에서 받아온 JSON데이터를 JSON오브젝트로 변환
                 JSONObject jobject = new JSONObject(str);
                 //results라는 key는 JSON배열로 되어있다
                 JSONArray results = jobject.getJSONArray("results");
 
-                if(jobject.get("status").equals("list")) {
+                if (jobject.get("status").equals("list")) {
                     Log.d("HHH", "list");
-                    int j=0;
+                    int j = 0;
                     //Calendar calendar = Calendar.getInstance();
-                    for(int i=0;i<results.length();i++){ //length->child의 갯수
+                    for (int i = 0; i < results.length(); i++) { //length->child의 갯수
                         JSONObject temp = results.getJSONObject(i);
 
                         //http://hyeonstorage.tistory.com/205
                         Calendar calendar = Calendar.getInstance();
                         Log.d("ddd", temp.getString("date_cal").substring(0, 4) + " + " + temp.getString("date_cal").substring(4, 6) + " + " + temp.getString("date_cal").substring(6, 8));
                         calendar.set(Integer.parseInt(temp.getString("date_cal").substring(0, 4)),
-                                Integer.parseInt(temp.getString("date_cal").substring(4, 6))-1,
+                                Integer.parseInt(temp.getString("date_cal").substring(4, 6)) - 1,
                                 Integer.parseInt(temp.getString("date_cal").substring(6, 8)));
 
                         CalendarDay day = CalendarDay.from(calendar);
@@ -216,7 +217,7 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
                     num = j;
                 }
 
-                if(jobject.get("status").equals("medicine")){
+                if (jobject.get("status").equals("medicine")) {
                     Log.d("HHH", "medicine");
                     med_adapter.init();
                     for (int i = 0; i < results.length(); i++) { //length->child의 갯수
@@ -228,7 +229,7 @@ public class RecordCal extends Fragment implements OnDateSelectedListener {
                         med_adapter.addItem(medName, onceNum, dayNum, notice);
                     }
                 }
-            } catch(JSONException e){
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }

@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="pressed">#7f7f7f</color>
-    <color name="focused">#7f7f7f</color>
-    <color name="default1">#e0e0e0</color>
+    <color name="pressed">#487BE1</color>
+    <color name="focused">#487BE1</color>
+    <color name="default1">#D8D8D8</color>
 </resources>

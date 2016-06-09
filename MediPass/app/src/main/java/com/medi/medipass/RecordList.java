@@ -3,7 +3,9 @@ package com.medi.medipass;
 import android.app.AlertDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +29,11 @@ import java.net.URL;
 /* listView 잘 설명된 블로그 : http://jo.centis1504.net/?p=1009 */
 /* http://recipes4dev.tistory.com/43 */
 
-public class RecordList extends Fragment {
+public class RecordList extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+
+    SwipeRefreshLayout mSwipeRefreshLayout;//새로고침
+    ListView listview;
+
     //data를 받아올 php주소
     String url_list = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/write_app.php";
     String url_medicine = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/write_medicine.php";
@@ -37,13 +43,14 @@ public class RecordList extends Fragment {
     ListViewAdapter_medicine med_adapter = new ListViewAdapter_medicine();
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.record_list, container, false);
 
-        final ListView listview;
+        mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefresh_record);//새로고침
+        mSwipeRefreshLayout.setOnRefreshListener(this);
 
         //리스트뷰 참조 및 Adapter달기
-        listview = (ListView)view.findViewById(R.id.listview);
+        listview = (ListView) view.findViewById(R.id.listview);
         listview.setAdapter(adapter);
 
         //php를 읽어올때 사용할 변수
@@ -52,14 +59,14 @@ public class RecordList extends Fragment {
 
 
         //클릭 이벤트 정의
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id){
+            public void onItemClick(AdapterView parent, View v, int position, long id) {
                 //int position = (Integer)v.getTag();
                 ListViewItem item = (ListViewItem) parent.getItemAtPosition(position);
 
-                View dialogView = (View)v.inflate(getContext(), R.layout.record_item_click, null);
-                ListView listview_med = (ListView)dialogView.findViewById(R.id.record_item_click_listView);
+                View dialogView = (View) v.inflate(getContext(), R.layout.record_item_click, null);
+                ListView listview_med = (ListView) dialogView.findViewById(R.id.record_item_click_listView);
                 listview_med.setAdapter(med_adapter);
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -74,7 +81,7 @@ public class RecordList extends Fragment {
                 GettingPHP mPHP = new GettingPHP();
                 mPHP.execute(url_medicine);
 
-                TextView tvdate = (TextView)dialogView.findViewById(R.id.textView);
+                TextView tvdate = (TextView) dialogView.findViewById(R.id.textView);
                 tvdate.setText(item.getItem_date());
 
                 builder.show();
@@ -83,6 +90,24 @@ public class RecordList extends Fragment {
 
 
         return view;
+    }
+
+    //새로고침
+    @Override
+    public void onRefresh() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                adapter.init();
+                adapter.notifyDataSetChanged();
+                //해당 어댑터를 서버와 통신한 값이 나오면 됨
+                GettingPHP gPHP = new GettingPHP();
+                gPHP.execute(url_list);
+                listview.setAdapter(adapter);
+                mSwipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1000);
     }
 
     //AsyncTask : thread + handler
@@ -99,16 +124,16 @@ public class RecordList extends Fragment {
         //execute메서드로 전달한 data tye이 params 인수로 전달되는데 여러개의 인수를 전달할 수 있으므로 배열 타입으로 되어 있다.
         //그래서 하나의 인수만 필요하다면 params[0]만 사용하면 된다.
         @Override
-        protected String doInBackground(String... params){
+        protected String doInBackground(String... params) {
             StringBuilder jsonHtml = new StringBuilder();
-            try{
+            try {
                 // URL --> openConnection() --> URLConnection  --> getInputStream --> InputStream (내용읽음)
                 URL phpUrl = new URL(params[0]);
-                HttpURLConnection conn = (HttpURLConnection)phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
+                HttpURLConnection conn = (HttpURLConnection) phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
 
-                if(conn != null){
-                    if(params[0].equals(url_medicine)){
-                        String data = "date="+date+"& disName="+disName;
+                if (conn != null) {
+                    if (params[0].equals(url_medicine)) {
+                        String data = "date=" + date + "& disName=" + disName;
 
                         conn.setReadTimeout(10000);
                         conn.setConnectTimeout(5000);
@@ -128,11 +153,11 @@ public class RecordList extends Fragment {
                         conn.connect();
                     }
 
-                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK){
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                        while(true){
+                        while (true) {
                             String line = br.readLine();
-                            if(line == null) break;
+                            if (line == null) break;
                             jsonHtml.append(line + "\n");
                             Log.d("HHH", "list_line : " + line);
                         }
@@ -140,7 +165,7 @@ public class RecordList extends Fragment {
                     }
                 }
                 conn.disconnect();
-            } catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             return jsonHtml.toString();
@@ -148,14 +173,14 @@ public class RecordList extends Fragment {
 
         //가져온 데이터를 이용해 원하는 일을 하도록 한다
         @Override
-        protected void onPostExecute(String str){
-            try{
+        protected void onPostExecute(String str) {
+            try {
                 //php에서 받아온 JSON데이터를 JSON오브젝트로 변환
                 JSONObject jobject = new JSONObject(str);
                 //results라는 key는 JSON배열로 되어있다
                 JSONArray results = jobject.getJSONArray("results");
 
-                if(jobject.get("status").equals("list")) {
+                if (jobject.get("status").equals("list")) {
                     Log.d("LIST", "list");
                     for (int i = 0; i < results.length(); i++) { //length->child의 갯수
                         JSONObject temp = results.getJSONObject(i);
@@ -165,7 +190,7 @@ public class RecordList extends Fragment {
                     }
                 }
 
-                if(jobject.get("status").equals("medicine")){
+                if (jobject.get("status").equals("medicine")) {
                     Log.d("LIST", "medicine");
                     med_adapter.init();
                     for (int i = 0; i < results.length(); i++) { //length->child의 갯수
@@ -177,7 +202,7 @@ public class RecordList extends Fragment {
                         med_adapter.addItem(medName, onceNum, dayNum, notice);
                     }
                 }
-            } catch(JSONException e){
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }

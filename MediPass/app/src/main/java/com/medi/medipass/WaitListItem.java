@@ -8,17 +8,25 @@ public class WaitListItem {
     private String hosname;
     private String hoswait;
 
-    public String getHosname(){return hosname;}
+    public String getHosname() {
+        return hosname;
+    }
 
-    public void setHosname(String hosname){this.hosname = hosname;}
+    public void setHosname(String hosname) {
+        this.hosname = hosname;
+    }
 
-    public String getHoswait(){return hoswait;}
+    public String getHoswait() {
+        return hoswait;
+    }
 
-    public void setHoswait(String hoswait){this.hoswait = hoswait;}
+    public void setHoswait(String hoswait) {
+        this.hoswait = hoswait;
+    }
 
-    public WaitListItem(String hosname, String hoswait){
-        this.hosname=hosname;
-        this.hoswait=hoswait;
+    public WaitListItem(String hosname, String hoswait) {
+        this.hosname = hosname;
+        this.hoswait = hoswait;
     }
 
 }

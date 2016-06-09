@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class SubmitAdapter extends BaseAdapter{
+public class SubmitAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private ArrayList<SubmitItem> data;
     private int layout;
@@ -20,26 +20,30 @@ public class SubmitAdapter extends BaseAdapter{
     private ArrayList<SubmitItem> submitItemList = new ArrayList<SubmitItem>();
 
     //SubmitAdapter의 생성자
-    public SubmitAdapter(){
+    public SubmitAdapter() {
     }
 
 
     @Override
-    public int getCount(){return submitItemList.size();}
+    public int getCount() {
+        return submitItemList.size();
+    }
 
 
     //지정한 위치(position)에 있는 데이터와 아이템(row)의 ID를 리턴 : 필수구현
     @Override
-    public long getItemId(int position){return position;}
+    public long getItemId(int position) {
+        return position;
+    }
 
     //지정한 위치(position)에 있는 데이터 리턴 : 필수구현
     @Override
-    public Object getItem(int position){
+    public Object getItem(int position) {
         return submitItemList.get(position);
     }
 
     //아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String vTitle,String vDate, String vHospital, String vDisease, String vPresnum){
+    public void addItem(String vTitle, String vDate, String vHospital, String vDisease, String vPresnum) {
         Log.d("PHP", "addItem");
         SubmitItem item = new SubmitItem(vTitle, vDate, vHospital, vDisease, vPresnum);
 
@@ -53,7 +57,7 @@ public class SubmitAdapter extends BaseAdapter{
         notifyDataSetChanged();
     }
 
-    public void init(){
+    public void init() {
         submitItemList.clear();
     }
 
@@ -70,11 +74,11 @@ public class SubmitAdapter extends BaseAdapter{
         }
 
         //화면에 표시될 view(layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        TextView title=(TextView)convertView.findViewById(R.id.tv_title);
-        TextView date = (TextView)convertView.findViewById(R.id.tv_date);
-        TextView hospital = (TextView)convertView.findViewById(R.id.tv_hospital);
-        TextView disease = (TextView)convertView.findViewById(R.id.tv_disease);
-        TextView presnum = (TextView)convertView.findViewById(R.id.tv_presnum);
+        TextView title = (TextView) convertView.findViewById(R.id.tv_title);
+        TextView date = (TextView) convertView.findViewById(R.id.tv_date);
+        TextView hospital = (TextView) convertView.findViewById(R.id.tv_hospital);
+        TextView disease = (TextView) convertView.findViewById(R.id.tv_disease);
+        TextView presnum = (TextView) convertView.findViewById(R.id.tv_presnum);
 
         //Data Set(ListViewItem)에서 position에 위치한 데이터 참조 획득
         SubmitItem listviewItem = submitItemList.get(position);
@@ -86,7 +90,6 @@ public class SubmitAdapter extends BaseAdapter{
         hospital.setText(listviewItem.getHospital());
         disease.setText(listviewItem.getDisease());
         presnum.setText(listviewItem.getPrescription());
-
 
 
         return convertView;

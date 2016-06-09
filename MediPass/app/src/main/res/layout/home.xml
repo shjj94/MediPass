@@ -2,81 +2,89 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bak"
     android:gravity="center_horizontal"
-    android:layout_marginTop="30dp">
+    android:weightSum="1">
 
     <RelativeLayout
         android:layout_width="320dp"
-        android:layout_height="420dp"
-        android:background="#e0e0e0"
-        android:padding="15dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_weight="0.15"
+        android:background="#00000000"
+        android:padding="5dp">
+
         <Button
+            android:id="@+id/home_receipt"
             android:layout_width="150dp"
             android:layout_height="170dp"
-            android:id="@+id/home_receipt"
+            android:layout_alignParentEnd="false"
+            android:layout_margin="3dp"
             android:background="@drawable/back_receipt"
-            android:layout_margin="5dp"
+            android:gravity="left"
+            android:padding="10dp"
             android:text="진료 접수"
-            android:padding="10dp"
-            android:textSize="17dp"
-            android:gravity="left"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:layout_alignParentEnd="false" />
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
         <Button
-            android:layout_width="150dp"
-            android:layout_height="135dp"
             android:id="@+id/home_submit"
-            android:background="@drawable/back_submit"
-            android:layout_margin="5dp"
-            android:layout_toRightOf="@id/home_receipt"
-            android:text="처방전 제출"
-            android:padding="10dp"
-            android:gravity="left"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:layout_alignParentEnd="true"
-            android:textSize="17dp" />
-        <Button
             android:layout_width="150dp"
             android:layout_height="135dp"
-            android:id="@+id/home_mypage"
-            android:background="@drawable/back_mypage"
-            android:layout_margin="5dp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textSize="17dp"
-            android:gravity="left"
+            android:layout_alignParentEnd="false"
+            android:layout_margin="3dp"
             android:layout_toRightOf="@id/home_receipt"
-            android:layout_below="@id/home_submit"
-            android:text="마이페이지"/>
-        <Button
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:id="@+id/home_record"
-            android:background="@drawable/back_record"
-            android:layout_margin="5dp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:layout_below="@id/home_receipt"
-            android:padding="10dp"
-            android:textSize="17dp"
+            android:background="@drawable/back_submit"
             android:gravity="left"
-            android:text="진료기록"/>
-        <Button
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:id="@+id/home_check_number"
-            android:background="@drawable/back_wait"
-            android:layout_margin="5dp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:layout_below="@id/home_record"
-            android:text="대기인원 확인"
             android:padding="10dp"
+            android:text="처방전 제출"
+            android:textColor="#FFFFFF"
             android:textSize="17dp"
-            android:gravity="left"/>
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/home_mypage"
+            android:layout_width="150dp"
+            android:layout_height="145dp"
+            android:layout_below="@id/home_submit"
+            android:layout_margin="3dp"
+            android:layout_toRightOf="@id/home_receipt"
+            android:background="@drawable/back_mypage"
+            android:gravity="left"
+            android:padding="10dp"
+            android:text="마이페이지"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/home_record"
+            android:layout_width="150dp"
+            android:layout_height="110dp"
+            android:layout_below="@id/home_receipt"
+            android:layout_margin="3dp"
+            android:background="@drawable/back_record"
+            android:gravity="left"
+            android:padding="10dp"
+            android:text="진료기록"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/home_check_number"
+            android:layout_width="306dp"
+            android:layout_height="110dp"
+            android:layout_below="@id/home_record"
+            android:layout_margin="3dp"
+            android:background="@drawable/back_wait"
+            android:gravity="left"
+            android:padding="10dp"
+            android:text="대기인원 확인"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 

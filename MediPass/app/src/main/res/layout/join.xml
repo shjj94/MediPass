@@ -5,93 +5,98 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/join_back"
         android:layout_width="60dp"
         android:layout_height="wrap_content"
-        android:id="@+id/join_back"
-        android:background="@drawable/back"/>
+        android:background="@drawable/back" />
 
     <ImageView
         android:id="@+id/join_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/logo"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/logo" />
 
     <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
         android:id="@+id/edit_join_id"
-        android:layout_gravity="center"
-        android:hint="ID"
-        android:layout_marginBottom="5dp" />
-
-    <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:hint="ID" />
+
+    <EditText
         android:id="@+id/edit_join_pw"
-        android:layout_gravity="center"
-        android:hint="PW"
-        android:layout_marginBottom="5dp" />
-
-    <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:id="@+id/edit_join_name"
         android:layout_gravity="center"
-        android:hint="NAME"
-        android:layout_marginBottom="5dp" />
+        android:layout_marginBottom="5dp"
+        android:hint="PW" />
+
+    <EditText
+        android:id="@+id/edit_join_name"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"
+        android:hint="NAME" />
 
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_marginBottom="5dp">
+
         <Button
+            android:id="@+id/edit_join_year"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="4"
-            android:id="@+id/edit_join_year"
-            android:hint="YEAR"/>
+            android:hint="YEAR" />
+
         <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="2"
             android:id="@+id/edit_join_month"
-            android:hint="MONTH" />
-        <Button
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
+            android:hint="MONTH" />
+
+        <Button
             android:id="@+id/edit_join_day"
-            android:hint="DAY"/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:hint="DAY" />
     </LinearLayout>
 
     <RadioGroup
+        android:id="@+id/radio_gender"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:id="@+id/radio_gender"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="horizontal">
+
         <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/radio_join_male"
-            android:text="남"/>
-        <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="남" />
+
+        <RadioButton
             android:id="@+id/radio_join_female"
-            android:text="여"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="여" />
     </RadioGroup>
 
     <Button
+        android:id="@+id/bt_join_submit"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:id="@+id/bt_join_submit"
-        android:text="Join"
         android:layout_gravity="center"
-        android:background="#5e5e5e"/>
+        android:background="#5e5e5e"
+        android:text="Join" />
 
 </LinearLayout>

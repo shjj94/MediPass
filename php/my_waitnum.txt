@@ -1,0 +1,34 @@
+
+<?php
+   error_reporting(E_ALL& ~E_NOTICE); //에러 기록
+   ini_set("display_errors", 1); //에러메세지 노출 1:활성화 0:비활성화
+
+   //공통사항
+   include_once("../dbConnect-medipass.php");
+   header('Content-Type:text/html; charset=utf-8');
+
+   //환자정보
+
+   $id = "so";
+   $hospital_code= $_POST['hospital_code'];
+   //$hospital_code="1";
+   $sql = "SELECT wait_num FROM WAIT_LIST WHERE hospital_code='$hospital_code' AND user_id='$id'";
+
+   $result = mysqli_query($conn, $sql) or die(mysqli_error($conn));
+   //insert, delete - true false    select - select 값
+
+   $total_record = $result->num_rows;
+   $result_array=array();
+   for($i=0;$i<$total_record;$i++){
+      //한 행씩 읽기 위해 offset을 준다
+      $result->data_seek($i);
+
+      $row = $result->fetch_array();
+      $outResult = $row['wait_num'];
+
+   }
+
+   echo $outResult;
+
+   mysqli_close($conn);
+?>
