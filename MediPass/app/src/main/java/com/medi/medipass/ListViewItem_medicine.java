@@ -1,7 +1,7 @@
 package com.medi.medipass;
 
 /**
- * Created by shjjthjj on 2016-05-10.
+ * Created by Sohyeon on 2016-05-10.
  */
 public class ListViewItem_medicine {
     String medName;

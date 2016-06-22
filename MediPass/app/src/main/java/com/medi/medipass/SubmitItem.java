@@ -1,7 +1,7 @@
 package com.medi.medipass;
 
 /**
- * Created by Elizabeth on 2016-05-18.
+ * Created by Nara on 2016-05-18.
  */
 public class SubmitItem {
     protected String vTitle;//vName//tv_title 진료일

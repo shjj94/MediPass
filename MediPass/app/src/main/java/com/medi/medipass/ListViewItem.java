@@ -1,7 +1,7 @@
 package com.medi.medipass;
 
 /**
- * Created by shjjthjj on 2016-04-14.
+ * Created by Sohyeon on 2016-04-14.
  */
 public class ListViewItem {
     private String item_date;

@@ -38,6 +38,10 @@ import java.util.Calendar;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+/**
+ * Created by Sohyeon on 2016-05-03.
+ */
+
 public class RecordCal extends Fragment implements OnDateSelectedListener {
     private static final DateFormat FORMATTER = SimpleDateFormat.getDateInstance();
 

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by Elizabeth on 2016-05-31.
+ * Created by Nara on 2016-05-31.
  */
 public class WaitListAdapter extends BaseAdapter {
     Context mcontext = null;

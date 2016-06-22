@@ -1,7 +1,7 @@
 package com.medi.medipass;
 
 /**
- * Created by Elizabeth on 2016-05-31.
+ * Created by Nara on 2016-05-31.
  */
 public class WaitListItem {
     //waithos, waitnum

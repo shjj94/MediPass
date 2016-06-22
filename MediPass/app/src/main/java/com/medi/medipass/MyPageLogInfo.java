@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Created by Sohyeon on 2016-03-25.
+ */
+
+
 public class MyPageLogInfo extends AppCompatActivity implements View.OnClickListener {
 
     @Override

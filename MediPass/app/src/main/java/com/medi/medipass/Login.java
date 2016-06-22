@@ -7,6 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Created by Sohyeon on 2016-03-25.
+ */
+
 public class Login extends AppCompatActivity {
 
     public static Activity login_activity;// 해당 activity를 담을 변수

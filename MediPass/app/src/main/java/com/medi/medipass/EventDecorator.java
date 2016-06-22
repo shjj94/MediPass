@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 /**
- * Created by shjj on 2016-06-03.
+ * Created by Sohyeon on 2016-06-03.
  */
 
 public class EventDecorator implements DayViewDecorator {

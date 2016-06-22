@@ -26,6 +26,9 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Created by Sohyeon on 2016-05-03.
+ */
 /* listView 잘 설명된 블로그 : http://jo.centis1504.net/?p=1009 */
 /* http://recipes4dev.tistory.com/43 */
 

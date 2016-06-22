@@ -8,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * Created by Sohyeon on 2016-05-03.
+ */
+
 public class Record extends AppCompatActivity implements View.OnClickListener {
     View frag_record; // fragment View
 

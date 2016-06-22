@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by shjjthjj on 2016-04-14.
+ * Created by Sohyeon on 2016-04-14.
  */
 public class ListViewAdapter_medicine extends BaseAdapter {
     Context mcontext = null;

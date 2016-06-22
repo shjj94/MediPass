@@ -19,7 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by Elizabeth on 2016-04-07.
+ * Created by Nara on 2016-04-07.
  */
 
 public class WaitList extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {

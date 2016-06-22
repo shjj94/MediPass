@@ -33,12 +33,11 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-//https://www.binpress.com/tutorial/android-l-recyclerview-and-cardview-tutorial/156
 
 /**
- * Created by Elizabeth on 2016-05-18.
+ * Created by Nara on 2016-05-18.
  */
-
+//https://www.binpress.com/tutorial/android-l-recyclerview-and-cardview-tutorial/156
 //https://www.simplifiedcoding.net/android-recyclerview-and-cardview-tutorial/
 public class SubmitPrescription extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
@@ -79,7 +78,6 @@ public class SubmitPrescription extends AppCompatActivity implements SwipeRefres
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);//새로고침
         mSwipeRefreshLayout.setOnRefreshListener(this);
         /*리스트*/
-//SubmitItem(String vTitle,String vDate, String vHospital, String vDisease)
         listView = (ListView) findViewById(R.id.submitlist);
 
         //리스트뷰 참조 및 Adapter달기
@@ -88,19 +86,6 @@ public class SubmitPrescription extends AppCompatActivity implements SwipeRefres
         //php를 읽어올때 사용할 변수
         GettingPHP gPHP = new GettingPHP();
         gPHP.execute(url_showPrescription);
-
-
-//        ArrayList<SubmitItem> data=new ArrayList<>();
-//        SubmitItem write=new SubmitItem("2016/05/05","~2016/05/08","가나병원","감기");
-//        SubmitItem life=new SubmitItem("2016/05/05","~2016/05/08","나다병원","장염");
-//        SubmitItem move=new SubmitItem("2016/05/05","~2016/05/08","다라병원","관절염");
-//        SubmitItem mentor=new SubmitItem("2016/05/05","~2016/05/08","라마병원","결막염");
-//        data.add(write);
-//        data.add(life);
-//        data.add(move);
-//        data.add(mentor);
-//        SubmitAdapter adapter=new SubmitAdapter(this,R.layout.submit_item,data);
-//        listView.setAdapter(adapter);
 
 
         mContext = this;
@@ -204,8 +189,6 @@ public class SubmitPrescription extends AppCompatActivity implements SwipeRefres
 
                         submitPrescription();
 
-                        //adapter.notifyDataSetChanged();
-                        //listView.invalidate();
 
                         /*다이얼로그 종료*/
                         dialog.dismiss();
@@ -274,18 +257,7 @@ public class SubmitPrescription extends AppCompatActivity implements SwipeRefres
 //        hojungNFCReadLibrary.onResume(intent);
 
     }
-    /*
-    //뭐하는 앤지 아직! 다시 보기
-    @Override
-   public void onResume() {
-      super.onResume();
-      Log.d(TAG,"onResume");
 
-      Log.d(TAG,"intent : "+getIntent().getAction());
-      Intent intent=getIntent();
-      hojungNFCReadLibrary.onResume(intent);
-
-   }*/
 
     @Override
     protected void onPause() {
@@ -358,28 +330,7 @@ public class SubmitPrescription extends AppCompatActivity implements SwipeRefres
 
                         //post메세지가 전송된다
                         conn.connect();
-//                    } else if (params[0].equals(url_registerPharm)) {
-//                        String data = "pharm_code=" + pharm_code;
-//                        Log.d(PHP, "data " + data);
-//                        conn.setReadTimeout(10000);
-//                        conn.setConnectTimeout(5000);
-//                        conn.setRequestMethod("POST");
-//                        conn.setDoInput(true);
-//                        conn.setDoOutput(true);
-//                        //conn.setRequestProperty("Content-Type", "application/json");
-//                        conn.setUseCaches(false);
-//
-//                        OutputStream os = conn.getOutputStream();
-//                        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-//                        bw.write(data);
-//                        bw.flush();
-//                        bw.close();
-//                        Log.d(PHP, "data push end" + data);
-//
-//                        //post메세지가 전송된다
-//                        conn.connect();
-//
-//                    }
+
 
                     if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {
                         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));

@@ -29,13 +29,16 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * Created by Nara on 2016-03-25.
+ */
+
 public class Home extends AppCompatActivity {
 
     /*url*/
     String register_url = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/register_wait_list.php";
     String wait_url = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/show_waitnum.php";
     String my_wait_num_url = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/my_waitnum.php";
-    String show_url = "http://condi.swu.ac.kr/Prof-Kang/2013111539/medipass/show.php";
 
     /*태그 이름 지정*/
     final String TAG = "NFC";
@@ -50,7 +53,7 @@ public class Home extends AppCompatActivity {
     public static Activity home_activity;
 
     /*nfc 병원코드 저장 변수*/
-    static String hospital_code = "000001";
+    static String hospital_code = "1";
 
     /*대기인원 업데이트 위한 핸들러*/
     Handler m_handler;
@@ -70,7 +73,6 @@ public class Home extends AppCompatActivity {
     Context mContext;
     Boolean recptClicked;
 
-    //SubmitPrescription submit_activity = (SubmitPrescription)SubmitPrescription.submit_activity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -158,15 +160,6 @@ public class Home extends AppCompatActivity {
         Button bt_waitList = (Button) findViewById(R.id.home_check_number);
         final Button bt_receipt = (Button) findViewById(R.id.home_receipt);
         Button bt_submit = (Button) findViewById(R.id.home_submit);
-
-        //Typeface typeFace = Typeface.createFromAsset(getAssets(), "저장되어있는폰트파일"));
-        //텍스트뷰.setTypeface(typeFace);
-//        Typeface typeFace = Typeface.createFromAsset(getAssets(), "yoongodic");
-//        bt_record.setTypeface(typeFace);
-//        bt_myPage.setTypeface(typeFace);
-//        bt_receipt.setTypeface(typeFace);
-//        bt_submit.setTypeface(typeFace);
-//        bt_waitList.setTypeface(typeFace);
 
         bt_record.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -338,18 +331,7 @@ public class Home extends AppCompatActivity {
 //        hojungNFCReadLibrary.onResume(intent);
 
     }
-    /*
-    //뭐하는 앤지 아직! 다시 보기
-    @Override
-   public void onResume() {
-      super.onResume();
-      Log.d(TAG,"onResume");
 
-      Log.d(TAG,"intent : "+getIntent().getAction());
-      Intent intent=getIntent();
-      hojungNFCReadLibrary.onResume(intent);
-
-   }*/
 
     @Override
     protected void onPause() {
@@ -383,7 +365,6 @@ public class Home extends AppCompatActivity {
 
         GettingPHP gPHP = new GettingPHP();
         gPHP.execute(wait_url);
-        //gPHP.execute(show_url);
     }
 
     /*내 번호 저장하기*/
@@ -480,7 +461,6 @@ public class Home extends AppCompatActivity {
                         conn.setRequestMethod("POST");
                         conn.setDoInput(true);
                         conn.setDoOutput(true);
-                        //conn.setRequestProperty("Content-Type", "application/json");
                         conn.setUseCaches(false);
 
                         OutputStream os = conn.getOutputStream();
@@ -511,51 +491,7 @@ public class Home extends AppCompatActivity {
                     }
                 }
                 conn.disconnect();
-//            try {
-//                // URL --> openConnection() --> URLConnection  --> getInputStream --> InputStream (내용읽음)
-//                Log.d(PHP, "back_try");
-//                URL phpUrl = new URL(params[0]);
-//                HttpURLConnection conn = (HttpURLConnection) phpUrl.openConnection(); //URL내용을 읽어오거나 GET/POST로 전달할 때 사용
-//
-//                if (conn != null) {
-//                    /*진료 접수 url일 때 실행*/
-//
-//                    String data = "hospital_code="+hospital_code;
-//                    Log.d(PHP, "data " + data);
-//                    conn.setReadTimeout(10000);
-//                    conn.setConnectTimeout(5000);
-//                    conn.setRequestMethod("POST");
-//                    conn.setDoInput(true);
-//                    conn.setDoOutput(true);
-//                    //conn.setRequestProperty("Content-Type", "application/json");
-//                    conn.setUseCaches(false);
-//
-//                    OutputStream os = conn.getOutputStream();
-//                    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-//                    bw.write(data);
-//                    bw.flush();
-//                    bw.close();
-//                    Log.d(PHP, "data push end" + data);
-//
-//                    //post메세지가 전송된다
-//                    conn.connect();
-//
-//                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK){
-//                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//                        while(true){
-//                            String line = br.readLine();
-//                            if(line == null) break;
-//                            jsonHtml.append(line + "\n");
-//                            Log.d("HHH", "list_line : " + line);
-//
-//                            /*대기인원 저장*/
-//                            wait_num=jsonHtml.toString();
-//                            Log.d("hhh", "waitn"+wait_num);
-//                        }
-//                        br.close();
-//                    }
-//                }
-//                conn.disconnect();
+
             } catch (Exception e) {
                 Log.d(PHP, "Error");
                 e.printStackTrace();
@@ -573,11 +509,6 @@ public class Home extends AppCompatActivity {
 
                 Log.d(PHP, "post_try");
 
-                /*대기인원 지정*/
-                //int wt;
-                //wt=Integer.parseInt(wait_num);
-                //wt=wt-1;
-                //Log.d(PHP, "Wt : "+String.valueOf(wt));
                 tv = (TextView) findViewById(R.id.home_receipt);
                 tv.setText("내 번호\n" + wait_num);
                 tv.setTextSize(30.0f);

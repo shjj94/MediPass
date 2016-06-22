@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * Created by Nara on 2016-05-18.
+ */
+
 public class SubmitAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private ArrayList<SubmitItem> data;
@@ -96,37 +100,4 @@ public class SubmitAdapter extends BaseAdapter {
     }
 
 
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent){
-//        if(convertView==null){
-//            convertView=inflater.inflate(layout,parent,false);
-//        }
-//        SubmitItem submitItem=data.get(position);
-//
-//        //ImageView icon=(ImageView)convertView.findViewById(R.id.checkimg);
-//        //icon.setImageResource(submitItem.getIcon());
-//
-//        TextView helpname=(TextView)convertView.findViewById(R.id.tv_title);
-//        helpname.setText(submitItem.getTitle());
-//
-//        TextView time = (TextView)convertView.findViewById(R.id.tv_date);
-//        time.setText(submitItem.getDate());
-//
-//        TextView hospital = (TextView)convertView.findViewById(R.id.tv_hospital);
-//        hospital.setText(submitItem.getHospital());
-//
-//        TextView disease = (TextView)convertView.findViewById(R.id.tv_disease);
-//        disease.setText(submitItem.getDisease());
-//
-//        TextView presnum = (TextView)convertView.findViewById(R.id.tv_presnum);
-//        presnum.setText(submitItem.getPresnum());
-//
-//        return convertView;
-//    }
-    //        /*
-//        protected String vTitle;//vName//tv_title 진료일
-//        protected String vDate;//vSurname//tv_date 처방전 발급 마감일
-//        protected String vHospital;//vEmail//tv_hospital 병원이름
-//        protected String vDisease;//vTitle//tv_disease 병이름
-//    */
 }
